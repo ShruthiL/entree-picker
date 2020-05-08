@@ -37,17 +37,17 @@ Restaurant.limit(2).each_with_index do |res, index|
 end
 
 Restaurant.limit(2).each_with_index do |res, index|
-  Review.create(rating: 4.7, comments: "Love it! Everyone must try this dish", user: User.all[index], menu_item: MenuItem.[8])
+  Review.create(rating: 4.7, comments: "Love it! Everyone must try this dish", user: User.all[index], menu_item: MenuItem.all[8])
 end
 
 Restaurant.limit(2).each_with_index do |res, index|
-  Review.create(rating: 4.6, comments: "This is the best dish I ever had", user: User.all[index], menu_item: MenuItem.[2])
+  Review.create(rating: 4.6, comments: "This is the best dish I ever had", user: User.all[index], menu_item: MenuItem.all[2])
 end
 
 Restaurant.limit(2).each_with_index do |res, index|
-  Review.create(rating: 4.8, comments: "My boyfriend just loved this dish", user: User.all[index], menu_item: MenuItem.[1])
+  Review.create(rating: 4.8, comments: "My boyfriend just loved this dish", user: User.all[index], menu_item: MenuItem.all[1])
 end
 
 Restaurant.limit(4).each_with_index do |res, index|
-  Review.create(rating: 4.8, comments: "I want to try this dish again, just love it", user: User.all[index], menu_item: MenuItem.[3])
+  Review.create(rating: 4.8, comments: "I want to try this dish again, just love it", user: User.all[index], menu_item: MenuItem.all[3])
 end
