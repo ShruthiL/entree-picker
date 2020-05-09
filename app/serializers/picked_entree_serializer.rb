@@ -12,5 +12,6 @@ class PickedEntreeSerializer < ActiveModel::Serializer
         return rev
       end
     end
+    return ""
   end
 end

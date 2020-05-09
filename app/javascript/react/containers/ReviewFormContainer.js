@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-const EntreeReviewFormContainer = () => {
+import ErrorList from '../components/ErrorList'
+
+const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm}) => {
   const [reviewRecord, setReviewRecord] = useState({
     rating: "",
     comments: ""
@@ -32,13 +34,12 @@ const EntreeReviewFormContainer = () => {
     if (validForSubmission()) {
       let formPayload = {
         review: {
-          comments: reviewRecord.review,
+          comments: reviewRecord.comments,
           rating: reviewRecord.rating,
-          user_id: props.user.id,
-          podcast_id: props.id
+          menu_item_id: entree.menu_item.id
         }
       };
-      fetch(`/api/v1/podcasts/${props.id}/reviews`, {
+      fetch("/api/v1/reviews", {
         credentials: "same-origin",
         method: "POST",
         body: JSON.stringify(formPayload),
@@ -47,43 +48,50 @@ const EntreeReviewFormContainer = () => {
           "Content-Type": "application/json",
         },
       })
-        .then((response) => {
-          if (response.ok) {
-            return response;
-          } else {
-            response.json().then((body) => setErrors(body.error));
-            let errorMessage = `${response.status} (${response.statusText})`;
-            let error = new Error(errorMessage);
-            throw error;
-          }
-        })
-        .then((response) => response.json())
-        .then((body) => {
-          props.rerender(body.review)
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          response.json().then((body) => setErrors(body.error));
+          let errorMessage = `${response.status} (${response.statusText})`;
+          let error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        console.log(body)
+        if (body.errors){
+        // setErrors(parsedData.errors)
+        } else {
+          fetchPickedReviews()
           setReviewRecord({
             rating: "",
-            review: ""
+            comments: ""
            })
-        })
-        .catch((error) => console.error(`Error in fetch: ${error.message}`));
+        }
+      })
+      .catch((error) => console.error(`Error in fetch: ${error.message}`));
     }
   };
+
+  const handleCancelReviewForm = () => {
+    handleShowReviewForm(false)
+  }
 
   return (
     <div>
       <h4>Add a Review:</h4>
       <form className="new-review" onSubmit={onSubmit}>
+        <ErrorList errors={errors}/>
         <label>
           Rating:
-          <select id="rating" value={reviewRecord.rating} onChange={handleChange}>
-            <option value=""></option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <input
+            type="text"
+            id="rating"
+            onChange={handleChange}
+            value={reviewRecord.rating}
+          />
         </label>
 
         <label>
@@ -95,11 +103,12 @@ const EntreeReviewFormContainer = () => {
             value={reviewRecord.comments}
           />
         </label>
-
+        
         <input className="button" type="submit" value="Submit" />
+        <input className="button" onClick={handleCancelReviewForm} type="button" value="Cancel" />
       </form>
     </div>
   )
 }
 
-export default EntreeReviewFormContainer;
+export default ReviewFormContainer;

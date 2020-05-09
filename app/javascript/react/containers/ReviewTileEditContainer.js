@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import _ from 'lodash'
 
-const ReviewTileEditContainer = ({entree, review, fetchPickedReviews}) => {
+import ErrorList from '../components/ErrorList'
+
+const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview, handleEditReview}) => {
   const [reviewRecord, setReviewRecord] = useState({
     rating: review.rating,
     comments: review.comments
    });
-  const [errors, setErrors] = useState({});
+  const [ errors, setErrors ] = useState({})
 
   const handleChange = (event) => {
     setReviewRecord({
@@ -63,6 +65,7 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews}) => {
         if (body.errors){
         // setErrors(parsedData.errors)
         } else {
+          handleEditReview(false)
           fetchPickedReviews()
         }
       })
@@ -70,10 +73,15 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews}) => {
     }
   };
 
+  const handleEditReviewForm = () => {
+    handleEditReview(false)
+  }
+
   return (
     <div>
-      <h4>Add a Review:</h4>
+      <h4>Edit the Review:</h4>
       <form className="new-review" onSubmit={onReviewEditSubmit}>
+        <ErrorList errors={errors}/>
         <label>
           Rating:
           <input
@@ -95,6 +103,7 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews}) => {
         </label>
 
         <input className="button" type="submit" value="Submit" />
+        <input className="button" onClick={handleEditReviewForm} type="button" value="Cancel" />
       </form>
     </div>
   )

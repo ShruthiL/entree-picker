@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import EntreeHistoryTileComponent from '../components/EntreeHistoryTileComponent';
+import EntreeHistoryTileContainer from './EntreeHistoryTileContainer';
 
-const PopularEntreeHistoryContainer = (props) => {
+const EntreeHistoryContainer = (props) => {
   const [ entreeHistory, setEntreeHistory ] = useState([])
-  const [ editReview, setEditReview ] = useState(false)
 
   useEffect(() => {
     fetchPickedReviews();
@@ -12,7 +11,7 @@ const PopularEntreeHistoryContainer = (props) => {
 
   const fetchPickedReviews = () => {
     console.log('check');
-    fetch(`/api/v1/menu_items`)
+    fetch(`/api/v1/picked_entrees`)
       .then((response) => {
         if (response.ok) {
           return response;
@@ -24,14 +23,10 @@ const PopularEntreeHistoryContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
+        console.log('check output')
         setEntreeHistory(body);
-        setEditReview(false)
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
-  }
-
-  const handleVisited = () => {
-
   }
 
   let historyTile
@@ -41,12 +36,10 @@ const PopularEntreeHistoryContainer = (props) => {
   } else {
     historyTile = entreeHistory.map(entree => {
       return (
-        <EntreeHistoryTileComponent
+        <EntreeHistoryTileContainer
           key={entree.id}
           entree={entree}
-          handleVisited={handleVisited}
-          fetchPickedReviews={fetchPickedReviews}
-          editReview={editReview}/>
+          fetchPickedReviews={fetchPickedReviews}/>
       )
     })
   }
@@ -58,4 +51,4 @@ const PopularEntreeHistoryContainer = (props) => {
   );
 };
 
-export default PopularEntreeHistoryContainer;
+export default EntreeHistoryContainer;

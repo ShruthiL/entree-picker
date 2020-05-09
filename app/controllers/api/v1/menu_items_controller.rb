@@ -1,36 +1,66 @@
 class Api::V1::MenuItemsController < ApplicationController
   before_action :authenticate_user!, except:[:index]
   protect_from_forgery unless: -> { request.format.json? }
-  def index
-    # render json: MenuItem.all
-    render json: PickedEntree.where(saved: true, user: current_user)
-  end
+  # def index
+  #   # render json: MenuItem.all
+  #   render json: PickedEntree.where(saved: true, user: current_user)
+  # end
 
   def create
     if params["prevPopularEntree"]["id"] != nil
       menu_item_id = params["prevPopularEntree"]["id"]
       PickedEntree.find_by_menu_item_id(menu_item_id).update(saved: false)
     end
+    nearby_restaurants = []
 
-    if params["location"]["lat"] != nil && params["location"]["lon"] != nil
-      url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{params["location"]["lat"]},#{params["location"]["lon"]}&radius=5000&types=restaurant&key=AIzaSyCRrWfWSdjkChUXasx3gJIYuK7oKBkMQkg"
+    if params["location"] != nil
+      if params["location"]["lat"] != nil && params["location"]["lon"] != nil
+        url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+      end
+      selected_menu_option = SelectedMenuOption.create(lat: params["location"]["lat"] , lon: params["location"]["lon"], user: current_user)
+
+      result = Faraday.get do |req|
+          req.url url
+          req.params['location']  = "#{params["location"]["lat"]},#{params["location"]["lon"]}"
+          req.params['radius']  = "5000"
+          req.params['types']  = "restaurant"
+          req.params['key']  = "AIzaSyCRrWfWSdjkChUXasx3gJIYuK7oKBkMQkg"
+      end
+
+      nearby_restaurants = JSON.parse(result.body)["results"]
     end
-    selected_menu_option = SelectedMenuOption.create(lat: params["lat"] , lon: params["lon"], user: current_user)
 
+    if params["selectedOptions"] != nil
+      url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
-    result = Faraday.get(url)
-    nearby_restaurants = JSON.parse(result.body)["results"]
-    # nearby_restaurants.each do |res|
-    #   Restaurant.create(restaurant_id: res["place_id"], name: res["name"], lat: res["geometry"]["location"]["lat"], lon: res["geometry"]["location"]["lng"])
-    # end
+      selected_menu_option = SelectedMenuOption.create(
+        zip_code: params["selectedOptions"]["zipcode"].to_i,
+        radius: params["selectedOptions"]["radius"],
+        rating: params["selectedOptions"]["rating"],
+        cuisine: params["selectedOptions"]["cuisine"],
+        price: params["selectedOptions"]["price"],
+        category: params["selectedOptions"]["category"],
+        user: current_user)
+
+      result = Faraday.get do |req|
+          req.url url
+          req.params['radius']  = params["selectedOptions"]["radius"]
+          req.params['types']  = "restaurant"
+          req.params['key']  = "AIzaSyCRrWfWSdjkChUXasx3gJIYuK7oKBkMQkg"
+          req.params['query']  = "#{params["selectedOptions"]["zipcode"]},#{params["selectedOptions"]["cuisine"]}"
+      end
+
+      nearby_restaurants = JSON.parse(result.body)["results"]
+    end
+
     nearby_restaurants_ids = []
     nearby_restaurants.each do |restaurant|
       nearby_restaurants_ids << restaurant["place_id"]
     end
 
-    most_rated_entree = ""
+    most_rated_entree = {}
     most_rated_entree_rating = 0
-    restaurant_with_most_rated_entree = ""
+    restaurant_with_most_rated_entree = {}
     picked_entrees_id = []
     PickedEntree.all.each do |picked_entree|
       picked_entrees_id << picked_entree.menu_item_id
@@ -53,7 +83,24 @@ class Api::V1::MenuItemsController < ApplicationController
         end
       end
     end
-    picked_entree = PickedEntree.create(selected_menu_option: selected_menu_option, menu_item: most_rated_entree, user: current_user )
-    render json: most_rated_entree
+
+    
+    if most_rated_entree != {}
+      picked_entree = PickedEntree.new(selected_menu_option: selected_menu_option, menu_item: most_rated_entree, user: current_user )
+      if picked_entree.save
+        render json: most_rated_entree
+      else
+        render json: { errors: picked_entree.errors.full_messages.to_sentence }, status: :unprocessable_entity
+      end
+    else
+      # flash[:error].now = "No entree found"
+      render json: {errors: "No entree found", status: :unprocessable_entity}
+    end
+  end
+
+    private
+
+    def selected_options_params
+      params.require(:location).permit(:lat, :lon)
     end
 end

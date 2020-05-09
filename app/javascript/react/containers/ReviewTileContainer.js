@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import ReviewTileEditContainer from './ReviewTileEditContainer'
 
-const ReviewTileContainer = ({entree, review, fetchPickedReviews, editReview}) => {
-  const [ editReviewState, setEditReviewState ] = useState(editReview)
-  
-  const handleEditReview = () => {
-    setEditReviewState(true)
+const ReviewTileContainer = ({entree, review, fetchPickedReviews, handleShowReviewForm}) => {
+  const [ editReview, setEditReview] = useState(false)
+
+  const handleEditReview = (val = true) => {
+    val == false ? setEditReview(val) : setEditReview(val)
+    // if (val == false) {
+    //   setEditReview(val)
+    // } else {
+    //   setEditReview(val)
+    // }
   }
 
   const handleDeleteReview = () => {
@@ -33,6 +38,7 @@ const ReviewTileContainer = ({entree, review, fetchPickedReviews, editReview}) =
         if (body.errors){
         // setErrors(parsedData.errors)
         } else {
+          handleShowReviewForm(false)
           fetchPickedReviews()
 
           // props.getGamePageInfo()
@@ -40,13 +46,14 @@ const ReviewTileContainer = ({entree, review, fetchPickedReviews, editReview}) =
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
+
   return (
     <div>
       <p>{review.rating}</p>
       <p>{review.comments}</p>
       {review.rating ? <button className="button" onClick={handleEditReview}>Edit</button> : ""}
       {review.rating ? <button className="button" onClick={handleDeleteReview}>Delete</button> : ""}
-      {editReviewState ? <ReviewTileEditContainer entree={entree} review={review} fetchPickedReviews={fetchPickedReviews}/> : ""}
+      {editReview ? <ReviewTileEditContainer handleEditReview={handleEditReview} editReview={editReview} entree={entree} review={review} fetchPickedReviews={fetchPickedReviews}/> : ""}
     </div>
   )
 }

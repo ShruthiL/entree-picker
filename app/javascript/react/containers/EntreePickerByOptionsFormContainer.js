@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from 'react-router-dom'
 
 const EntreePickerByOptionsFormContainer = (props) => {
   const [ selectedOptionsRecord, setSelectedOptionsRecord] = useState({
@@ -9,6 +10,7 @@ const EntreePickerByOptionsFormContainer = (props) => {
     price: '',
     category: ''
   })
+  const [ shouldRedirect, setShouldRedirect ] = useState(false)
 
   const handleInputChange = event => {
     setSelectedOptionsRecord({...selectedOptionsRecord, [event.currentTarget.id]: event.currentTarget.value})
@@ -33,7 +35,16 @@ const EntreePickerByOptionsFormContainer = (props) => {
   const handleFormSubmit = event => {
     event.preventDefault()
     console.log(selectedOptionsRecord)
-    
+    setShouldRedirect(true)
+  }
+
+  if (shouldRedirect) {
+    return <Redirect
+      to={{
+        pathname: "/popular_entree",
+        state: { selectedOptions: selectedOptionsRecord }
+      }}
+    />
   }
 
   return (
@@ -61,49 +72,23 @@ const EntreePickerByOptionsFormContainer = (props) => {
             onChange={handleInputChange}
           />
         </label>
-        <label>
-          Rating:
-          <input
-            className="rounded"
-            name="rating"
-            id="rating"
-            type="text"
-            value={selectedOptionsRecord.rating}
-            onChange={handleInputChange}
-          />
-        </label>
+
         <label>
           Cuisine:
-          <input
-            className="rounded"
-            name="cuisine"
-            id="cuisine"
-            type="text"
-            value={selectedOptionsRecord.cuisine}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Price:
-          <input
-            className="rounded"
-            name="price"
-            id="price"
-            type="text"
-            value={selectedOptionsRecord.price}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Category:
-          <select id="category" value={selectedOptionsRecord.category} onChange={handleInputChange}>
+          <select id="cuisine" value={selectedOptionsRecord.cuisine} onChange={handleInputChange}>
             <option value=""></option>
-            <option value="veg">Veg</option>
-            <option value="nonveg">Non-Veg</option>
-            <option value="vegan">Vegan</option>
+            <option value="american">American</option>
+            <option value="chinese">Chinese</option>
+            <option value="cuban">Cuban</option>
+            <option value="greek">Greek</option>
+            <option value="indian">Indian</option>
+            <option value="italian">Italian</option>
+            <option value="mediterranean">Mediterranean</option>
+            <option value="mexican">Mexican</option>
+            <option value="thai">Thai</option>
           </select>
         </label>
-
+    
         <div className="button-group">
           <button className="button" onClick={handleClearForm}>
             Clear
