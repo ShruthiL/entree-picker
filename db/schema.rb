@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_013327) do
+ActiveRecord::Schema.define(version: 2020_05_10_022944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 2020_05_06_013327) do
 
   create_table "menu_items", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", null: false
-    t.string "category", null: false
+    t.integer "price"
+    t.string "category"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "menu_item_id"
     t.index ["restaurant_id"], name: "index_menu_items_on_restaurant_id"
   end
 
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_05_06_013327) do
     t.float "lon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_range"
+    t.string "address"
     t.index ["restaurant_id"], name: "index_restaurants_on_restaurant_id", unique: true
   end
 

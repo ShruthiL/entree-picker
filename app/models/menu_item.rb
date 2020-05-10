@@ -1,7 +1,6 @@
 class MenuItem < ApplicationRecord
   validates :name, presence: true
-  validates :price, presence: true, numericality: true
-  validates :category, presence: true
+  validates :price, numericality: true
 
   belongs_to :restaurant
   has_many :ingredients

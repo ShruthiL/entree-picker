@@ -1,8 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+body {
+  .top-bar {
+    background-color: #0E0E0E;
+  }
+  font-family: 'Rajdhani', sans-serif;
+  background-color: #020203;
+  color: rgba(239,191,164,0.94);
+  background-image: url("BG1.jpg");
+//   width: auto;
+   background-size: cover;
+//   // background-size:100% 100%;
+//   background-repeat: no-repeat;
+
+.grid-container {
+    // margin: 3em 15em;
+    // text-align: center;
+    margin: 20px 200px;
+    text-align: center;
+
+  }
+}
+.satisfy {
+  font-family: 'Satisfy', cursive;
+}
 #map {
   height: 300px;
-  width: 300px;
+  max-width: 400px;
+  // height: 20em;
+  // width: 30em;
+  margin: auto;
 }
 
 .errorText {
   background-color: red;
+}
+
+.button {
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 150px;
+  font-weight: 700;
+}
+
+.margin-auto {
+  margin: 0 auto;
+}
+
+form {
+  label {
+    input {
+      max-width: 300px;
+    }
+  }
+  .button-group {
+    display: block;
+  }
+}
+
+.button-margin-top {
+  margin-top: 20px;
+}
+
+.entree-picker-container {
+  margin-top: 60px;
+}
+
+.popular-entree {
+  .entree-image {
+    width: 50px;
+  }
+  .restaurant-image {
+    width: 46px;
+    margin-right: 4px;
+  }
 }

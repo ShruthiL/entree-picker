@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import ReviewTileComponent from '../components/ReviewTileComponent';
 import MapComponent from '../components/MapComponent'
+import EntreeImg from "../../../assets/images/entree-circle-icon.png";
+import RestaurantImg from "../../../assets/images/restaurant.png";
 
 const PopularEntreeContainer = ({location}) => {
   const [ popularEntree, setPopularEntree ] = useState({})
@@ -62,18 +64,20 @@ const PopularEntreeContainer = ({location}) => {
     fetchPopularEntree();
   }
 
-  let reviewsTile;
-  if(errors) {
-    return <>Entrees not available</>
-  } else if (Object.keys(entreeReviews).length <= 0) {
-      return <>Loading</>
-    } else {
-      reviewsTile = entreeReviews.map(review => {
-        return (
-          <ReviewTileComponent key={review.id} review={review}/>
-        )
-      })
-    }
+  // let reviewsTile;
+  // if(errors) {
+  //   return <>Entrees not available</>
+  // } else if (Object.keys(entreeReviews).length <= 0) {
+  //     return <>Loading</>
+  //   } else {
+  //     reviewsTile = entreeReviews.map(review => {
+  //       return (
+  //         <ReviewTileComponent key={review.id} review={review}/>
+  //       )
+  //     })
+  //   }
+
+  // {reviewsTile}
 
   if(errors) {
     return <>Entrees not available</>
@@ -82,13 +86,13 @@ const PopularEntreeContainer = ({location}) => {
     } else {
       return (
         <div className="popular-entree">
-          <p>Here is the most popular entree you can try:</p>
-          <h4>Entree: {popularEntree.name}</h4>
-          <h4>Restaurant: {popularEntree.restaurant.name}</h4>
+          <h5 className="satisfy">We picked this wonderful entrée today</h5>
+          <h4 className="satisfy"><span><img className="entree-image" src={EntreeImg}></img></span> {popularEntree.name}</h4>
+          <h4 className="satisfy"><span><img className="restaurant-image" src={RestaurantImg}></img></span> {popularEntree.restaurant.name}</h4>
           <div><MapComponent location={popularEntree.restaurant}/></div>
-          <button className="button" onClick={handleEntree}>Not satisfied? Want to try a different entree</button>
+          <button className="button button-margin-top" onClick={handleEntree}>Not satisfied? Want to try a different entree</button>
           <button />
-          {reviewsTile}
+
         </div>
       );
     }

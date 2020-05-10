@@ -53,7 +53,7 @@ const EntreePickerByOptionsFormContainer = (props) => {
         <label>
           Zipcode:
           <input
-            className="rounded"
+            className="rounded margin-auto"
             name="zipcode"
             id="zipcode"
             type="text"
@@ -62,34 +62,17 @@ const EntreePickerByOptionsFormContainer = (props) => {
           />
         </label>
         <label>
-          Radius:
+          Price:
           <input
-            className="rounded"
+            className="rounded margin-auto"
             name="radius"
-            id="radius"
+            id="price"
             type="text"
-            value={selectedOptionsRecord.radius}
+            value={selectedOptionsRecord.price}
             onChange={handleInputChange}
           />
         </label>
-
-        <label>
-          Cuisine:
-          <select id="cuisine" value={selectedOptionsRecord.cuisine} onChange={handleInputChange}>
-            <option value=""></option>
-            <option value="american">American</option>
-            <option value="chinese">Chinese</option>
-            <option value="cuban">Cuban</option>
-            <option value="greek">Greek</option>
-            <option value="indian">Indian</option>
-            <option value="italian">Italian</option>
-            <option value="mediterranean">Mediterranean</option>
-            <option value="mexican">Mexican</option>
-            <option value="thai">Thai</option>
-          </select>
-        </label>
-    
-        <div className="button-group">
+        <div className="button-group button-margin-top">
           <button className="button" onClick={handleClearForm}>
             Clear
           </button>

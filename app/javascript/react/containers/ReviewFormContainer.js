@@ -103,7 +103,7 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm})
             value={reviewRecord.comments}
           />
         </label>
-        
+
         <input className="button" type="submit" value="Submit" />
         <input className="button" onClick={handleCancelReviewForm} type="button" value="Cancel" />
       </form>
