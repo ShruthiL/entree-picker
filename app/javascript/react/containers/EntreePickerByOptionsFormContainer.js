@@ -48,8 +48,8 @@ const EntreePickerByOptionsFormContainer = (props) => {
   }
 
   return (
-    <div>
-      <form className="callout background-none" onSubmit={handleFormSubmit}>
+    <div className="callout">
+      <form onSubmit={handleFormSubmit}>
         <label>
           Zipcode:
           <input

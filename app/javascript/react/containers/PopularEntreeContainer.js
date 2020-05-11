@@ -64,35 +64,19 @@ const PopularEntreeContainer = ({location}) => {
     fetchPopularEntree();
   }
 
-  // let reviewsTile;
-  // if(errors) {
-  //   return <>Entrees not available</>
-  // } else if (Object.keys(entreeReviews).length <= 0) {
-  //     return <>Loading</>
-  //   } else {
-  //     reviewsTile = entreeReviews.map(review => {
-  //       return (
-  //         <ReviewTileComponent key={review.id} review={review}/>
-  //       )
-  //     })
-  //   }
-
-  // {reviewsTile}
-
   if(errors) {
     return <>Entrees not available</>
   } else if (Object.keys(popularEntree).length <= 0) {
       return <>Loading..</>
     } else {
       return (
-        <div className="popular-entree">
+        <div className="random-entree">
           <h5 className="satisfy">We picked this wonderful entrée today</h5>
           <h4 className="satisfy"><span><img className="entree-image" src={EntreeImg}></img></span> {popularEntree.name}</h4>
           <h4 className="satisfy"><span><img className="restaurant-image" src={RestaurantImg}></img></span> {popularEntree.restaurant.name}</h4>
           <div><MapComponent location={popularEntree.restaurant}/></div>
           <button className="button button-margin-top" onClick={handleEntree}>Not satisfied? Want to try a different entree</button>
           <button />
-
         </div>
       );
     }

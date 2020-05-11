@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   get '/entree_picker', to: "homes#authenticate"
   get '/popular_entree', to: "homes#authenticate"
   get '/entree_history', to: "homes#authenticate"
+  get '/your_experience', to: "homes#authenticate"
 
   namespace :api do
     namespace :v1 do
       resources :menu_items, only: [:create]
       resources :picked_entrees, only: [:index, :update, :destroy]
       resources :reviews, only: [:create, :update, :destroy]
+      resources :site_reviews, only: [:index, :create, :update, :destroy]
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

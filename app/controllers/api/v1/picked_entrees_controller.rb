@@ -4,7 +4,7 @@ class Api::V1::PickedEntreesController < ApplicationController
 
   def index
     # render json: MenuItem.all
-    render json: PickedEntree.where(saved: true, user: current_user)
+    render json: PickedEntree.where(saved: true, user: current_user).order("created_at DESC")
   end
 
   # def create
@@ -57,7 +57,7 @@ class Api::V1::PickedEntreesController < ApplicationController
   #   picked_entree = PickedEntree.create(selected_menu_option: selected_menu_option, menu_item: most_rated_entree, user: current_user )
   #   render json: most_rated_entree
   # end
-# 
+#
 
   def update
     updated_picked_entree = PickedEntree.find(params[:id])

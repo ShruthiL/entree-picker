@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 import ErrorList from '../components/ErrorList'
 
-const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview, handleEditReview}) => {
+const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview, handleEditReview, siteReviewForm, fetchSiteReviews}) => {
   const [reviewRecord, setReviewRecord] = useState({
     rating: review.rating,
     comments: review.comments
@@ -30,46 +30,95 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
     return _.isEmpty(submitErrors);
   };
 
+  const handleSiteReviewEdit = () => {
+    let formPayload = {
+      review: {
+        comments: reviewRecord.comments,
+        rating: reviewRecord.rating,
+        user_id: review.user_id,
+      }
+    };
+    fetch(`/api/v1/site_reviews/${review.id}`, {
+      credentials: "same-origin",
+      method: "PATCH",
+      body: JSON.stringify(formPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if(response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body)
+      if (body.errors){
+        // setErrors(body.errors)
+      } else {
+        handleEditReview(false)
+        fetchSiteReviews()
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  const handlePickedReviewEdit = () => {
+    let formPayload = {
+      review: {
+        comments: reviewRecord.comments,
+        rating: reviewRecord.rating,
+        user_id: review.user_id,
+        menu_item_id: entree.menu_item.id
+      }
+    };
+    fetch(`/api/v1/reviews/${review.id}`, {
+      credentials: "same-origin",
+      method: "PATCH",
+      body: JSON.stringify(formPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      if(response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body)
+      if (body.errors){
+        // setErrors(body.errors)
+      } else {
+        handleEditReview(false)
+        fetchPickedReviews()
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const onReviewEditSubmit = (event) => {
     event.preventDefault();
     if (validForSubmission()) {
-      let formPayload = {
-        review: {
-          comments: reviewRecord.comments,
-          rating: reviewRecord.rating,
-          user_id: review.user_id,
-          menu_item_id: entree.menu_item.id
-        }
-      };
-      fetch(`/api/v1/reviews/${review.id}`, {
-        credentials: "same-origin",
-        method: "PATCH",
-        body: JSON.stringify(formPayload),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => {
-        if(response.ok) {
-          return response
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage)
-          throw error
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        console.log(body)
-        if (body.errors){
-        // setErrors(parsedData.errors)
-        } else {
-          handleEditReview(false)
-          fetchPickedReviews()
-        }
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`))
+      siteReviewForm ? handleSiteReviewEdit() : handlePickedReviewEdit()
+      // if (siteReviewForm) {
+      //
+      //
+      // } else {
+      //
+      // }
     }
   };
 

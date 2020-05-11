@@ -33,8 +33,12 @@ nav {
   z-index: -1;
 }
 
-input.display-none{
+input {
   max-width: 300px;
+  border-radius: 20px;
+}
+
+input.display-none{
   display: inline;
 }
 
@@ -46,10 +50,11 @@ input.display-none{
     // margin: 3em 15em;
     // text-align: center;
     background-color: #232323;
-    margin: 20px 200px;
+    margin: 5px 200px;
     text-align: center;
     color: rgba(239,191,164,0.94);
-
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 label.entree-text {
@@ -91,11 +96,6 @@ label.entree-text {
 }
 
 form {
-  // label {
-  //   input {
-  //     max-width: 300px;
-  //   }
-  // }
   .button-group {
     display: block;
   }
@@ -106,37 +106,62 @@ form {
 }
 
 .entree-picker-container {
-  margin-top: 60px;
+  margin-top: 20px;
   input {
-    width: 300px;
+    // max-width: 300px;
     margin: 0 auto;
   }
+  .callout {
+    background-color: #232323;
+  }
 }
 
-.callout{
-  background-color: none !important;
-}
+// max-width: 300px;
+// margin: 0 auto 20px auto;
 
-.popular-entree {
+// .callout {
+//   background-color: none !important;
+// }
+
+.random-entree {
+  margin-top: 20px;
   .entree-image {
-    width: 50px;
+    width: 40px;
+    margin-right: 2px;
   }
   .restaurant-image {
-    width: 46px;
+    width: 40px;
     margin-right: 4px;
   }
 }
 
 .entree-history {
-  background-color: none;
+  background-color: transparent !important;
   h4 {
     font-family: 'Satisfy', cursive;
   }
   .callout {
-    min-height: 270px;
+    min-height: 300px;
     background-color: #232323;
     font-family: 'Satisfy', cursive;
     color: rgba(239,191,164,0.94);
     vertical-align: middle;
+  }
+  input {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+}
+
+.user-experience {
+  .callout {
+    background-color: #232323;
+    font-family: 'Satisfy', cursive;
+    color: rgba(239,191,164,0.94);
+    vertical-align: middle;
+  }
+  input {
+    margin: 0 auto 20px auto;
+    display: block;
   }
 }
