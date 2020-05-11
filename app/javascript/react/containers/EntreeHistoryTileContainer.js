@@ -128,8 +128,8 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
 
   return (
     <div className="callout">
-      <p>{entree.menu_item.name}</p>
-      <p>{entree.restaurant.name}</p>
+      <h4>{entree.menu_item.name}</h4>
+      <h4>{entree.restaurant.name}</h4>
       <div>{usersInputOrRating}</div>
     </div>
   )

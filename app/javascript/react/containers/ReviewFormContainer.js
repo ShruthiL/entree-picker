@@ -87,6 +87,7 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm})
         <label>
           Rating:
           <input
+            className="display-none"
             type="text"
             id="rating"
             onChange={handleChange}
@@ -97,6 +98,7 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm})
         <label>
           Comments:
           <input
+            className="display-none"
             type="text"
             id="comments"
             onChange={handleChange}

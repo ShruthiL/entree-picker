@@ -36,16 +36,17 @@ const EntreeHistoryContainer = (props) => {
   } else {
     historyTile = entreeHistory.map(entree => {
       return (
+        <div className="cell small-12 medium-6" key={entree.id}>
         <EntreeHistoryTileContainer
-          key={entree.id}
           entree={entree}
           fetchPickedReviews={fetchPickedReviews}/>
+        </div>
       )
     })
   }
 
   return (
-    <div>
+    <div className="entree-history grid-x grid-margin-x">
       {historyTile}
     </div>
   );

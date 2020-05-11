@@ -1,26 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 body {
-  .top-bar {
-    background-color: #0E0E0E;
-  }
   font-family: 'Rajdhani', sans-serif;
   background-color: #020203;
   color: rgba(239,191,164,0.94);
-  background-image: url("BG1.jpg");
-//   width: auto;
-   background-size: cover;
-//   // background-size:100% 100%;
-//   background-repeat: no-repeat;
+}
+
+
+nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.watermark:after {
+  content: "";
+  background:url(bg_thai.jpg)no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+input.display-none{
+  max-width: 300px;
+  display: inline;
+}
+
+.new_user {
+
+}
 
 .grid-container {
     // margin: 3em 15em;
     // text-align: center;
+    background-color: #232323;
     margin: 20px 200px;
     text-align: center;
+    color: rgba(239,191,164,0.94);
 
-  }
 }
+
+label.entree-text {
+  color: rgba(239,191,164,0.94);
+  font-size: 1rem;
+  font-weight: 600;
+
+}
+
+.entree-link {
+  color: rgba(239,191,164,0.94);
+}
+
 .satisfy {
   font-family: 'Satisfy', cursive;
 }
@@ -49,11 +91,11 @@ body {
 }
 
 form {
-  label {
-    input {
-      max-width: 300px;
-    }
-  }
+  // label {
+  //   input {
+  //     max-width: 300px;
+  //   }
+  // }
   .button-group {
     display: block;
   }
@@ -65,6 +107,14 @@ form {
 
 .entree-picker-container {
   margin-top: 60px;
+  input {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.callout{
+  background-color: none !important;
 }
 
 .popular-entree {
@@ -74,5 +124,19 @@ form {
   .restaurant-image {
     width: 46px;
     margin-right: 4px;
+  }
+}
+
+.entree-history {
+  background-color: none;
+  h4 {
+    font-family: 'Satisfy', cursive;
+  }
+  .callout {
+    min-height: 270px;
+    background-color: #232323;
+    font-family: 'Satisfy', cursive;
+    color: rgba(239,191,164,0.94);
+    vertical-align: middle;
   }
 }

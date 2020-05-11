@@ -49,11 +49,11 @@ const EntreePickerByOptionsFormContainer = (props) => {
 
   return (
     <div>
-      <form className="callout" onSubmit={handleFormSubmit}>
+      <form className="callout background-none" onSubmit={handleFormSubmit}>
         <label>
           Zipcode:
           <input
-            className="rounded margin-auto"
+            className="rounded"
             name="zipcode"
             id="zipcode"
             type="text"
@@ -64,7 +64,7 @@ const EntreePickerByOptionsFormContainer = (props) => {
         <label>
           Price:
           <input
-            className="rounded margin-auto"
+            className="rounded"
             name="radius"
             id="price"
             type="text"
@@ -76,7 +76,7 @@ const EntreePickerByOptionsFormContainer = (props) => {
           <button className="button" onClick={handleClearForm}>
             Clear
           </button>
-          <input className="button" type="submit" value="Submit" />
+          <button className="button" type="submit" value="Submit">Submit</button>
         </div>
       </form>
     </div>
