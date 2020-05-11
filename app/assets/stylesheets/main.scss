@@ -22,7 +22,7 @@ nav {
 
 .watermark:after {
   content: "";
-  background: asset-url(bg_thai.jpg)no-repeat;
+  background: image-url(bg_thai.jpg)no-repeat;
   background-size: cover;
   opacity: 0.3;
   top: 0;
