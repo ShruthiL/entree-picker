@@ -128,7 +128,7 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
 
   return (
     <div>
-      <h4>Edit the Review:</h4>
+      <h5>Edit your Review</h5>
       <form className="new-review" onSubmit={onReviewEditSubmit}>
         <ErrorList errors={errors}/>
         <label>
@@ -151,8 +151,8 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
           />
         </label>
 
-        <input className="button" type="submit" value="Submit" />
-        <input className="button" onClick={handleEditReviewForm} type="button" value="Cancel" />
+        <button className="button" type="submit" value="Submit">Submit</button>
+        <button className="button" onClick={handleEditReviewForm} type="button" value="Cancel">Cancel</button>
       </form>
     </div>
   )

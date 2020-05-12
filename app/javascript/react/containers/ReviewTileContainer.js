@@ -75,8 +75,8 @@ const ReviewTileContainer = ({entree, review, fetchPickedReviews, handleShowRevi
   }
 
   return (
-    <div>
-      <h4>Your Review:</h4>
+    <div className="review-tile">
+      <h5>Your Review</h5>
       <p>{review.rating}</p>
       <p>{review.comments}</p>
       {review.rating ? <button className="button" onClick={handleEditReview}>Edit</button> : ""}

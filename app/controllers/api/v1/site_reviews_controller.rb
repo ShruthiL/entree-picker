@@ -3,7 +3,8 @@ class Api::V1::SiteReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
-    render json: { current_user_review: SiteReview.where(user: current_user), site_reviews: SiteReview.all }
+    render json: { current_user_review: serialized_data(SiteReview.where(user: current_user), SiteReviewSerializer),
+      site_reviews: serialized_data(SiteReview.where.not(user: current_user).order("rating DESC").limit(2), SiteReviewSerializer) }
   end
 
   def create
@@ -32,6 +33,10 @@ class Api::V1::SiteReviewsController < ApplicationController
   end
 
   private
+
+  def serialized_data(data, serializer)
+    ActiveModelSerializers::SerializableResource.new(data, each_serializer: serializer, scope: current_user)
+  end
 
   def site_review_params
     params.require(:review).permit(:rating, :comments)

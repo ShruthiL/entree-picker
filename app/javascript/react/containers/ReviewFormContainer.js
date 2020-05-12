@@ -126,8 +126,8 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm, 
   }
 
   return (
-    <div className="callout review-form">
-      <h4>Add a Review:</h4>
+    <div className="callout review-tile">
+      <h5>Add a Review</h5>
       <form className="new-review" onSubmit={handleFormSubmit}>
         <ErrorList errors={errors}/>
         <label>
@@ -150,8 +150,8 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm, 
           />
         </label>
 
-        <input className="button" type="submit" value="Submit" />
-        <input className="button" onClick={handleCancelReviewForm} type="button" value="Cancel" />
+        <button className="button" type="submit" value="Submit">Submit</button>
+        <button className="button" onClick={handleCancelReviewForm} type="button" value="Cancel">Cancel</button>
       </form>
     </div>
   )

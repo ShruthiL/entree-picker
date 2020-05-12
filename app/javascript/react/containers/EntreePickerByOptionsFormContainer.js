@@ -4,11 +4,7 @@ import { Redirect } from 'react-router-dom'
 const EntreePickerByOptionsFormContainer = (props) => {
   const [ selectedOptionsRecord, setSelectedOptionsRecord] = useState({
     zipcode: '',
-    radius: '',
-    rating: '',
-    cuisine: '',
-    price: '',
-    category: ''
+    price: ''
   })
   const [ shouldRedirect, setShouldRedirect ] = useState(false)
 
@@ -17,13 +13,9 @@ const EntreePickerByOptionsFormContainer = (props) => {
   }
 
   const handleClearFields = () => {
-    setselectedOptionsRecord({
-      zipcode: null,
-      radius: null,
-      rating: null,
-      cuisine: '',
-      price: null,
-      category: ''
+    setSelectedOptionsRecord({
+      zipcode: '',
+      price: ''
     })
   }
 
@@ -34,14 +26,13 @@ const EntreePickerByOptionsFormContainer = (props) => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    console.log(selectedOptionsRecord)
     setShouldRedirect(true)
   }
 
   if (shouldRedirect) {
     return <Redirect
       to={{
-        pathname: "/popular_entree",
+        pathname: "/picked_entree",
         state: { selectedOptions: selectedOptionsRecord }
       }}
     />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LoaderComponent from '../components/LoaderComponent'
 
 import ReviewTileComponent from '../components/ReviewTileComponent';
 import MapComponent from '../components/MapComponent'
@@ -67,7 +68,7 @@ const PopularEntreeContainer = ({location}) => {
   if(errors) {
     return <>Entrees not available</>
   } else if (Object.keys(popularEntree).length <= 0) {
-      return <>Loading..</>
+      return <><LoaderComponent /></>
     } else {
       return (
         <div className="random-entree">

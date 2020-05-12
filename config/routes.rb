@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # end
 
   get '/entree_picker', to: "homes#authenticate"
-  get '/popular_entree', to: "homes#authenticate"
+  get '/picked_entree', to: "homes#authenticate"
   get '/entree_history', to: "homes#authenticate"
   get '/your_experience', to: "homes#authenticate"
 

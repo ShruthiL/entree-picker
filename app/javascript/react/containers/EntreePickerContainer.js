@@ -42,7 +42,7 @@ const EntreePickerContainer = (props) => {
   if (shouldRedirect) {
     return <Redirect
       to={{
-        pathname: "/popular_entree",
+        pathname: "/picked_entree",
         state: { location: location }
       }}
     />

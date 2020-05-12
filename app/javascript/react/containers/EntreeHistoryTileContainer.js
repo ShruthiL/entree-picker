@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import ReviewFormContainer from '../containers/ReviewFormContainer';
 import ReviewTileContainer from "../containers/ReviewTileContainer"
+import EntreeImg from "../../../assets/images/entree-circle-icon.png";
+import RestaurantImg from "../../../assets/images/restaurant.png";
 
 
 const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
@@ -128,8 +130,8 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
 
   return (
     <div className="callout">
-      <h4>{entree.menu_item.name}</h4>
-      <h4>{entree.restaurant.name}</h4>
+      <h4><span><img className="entree-image" src={EntreeImg}></img></span>{entree.menu_item.name}</h4>
+      <h4><span><img className="restaurant-image" src={RestaurantImg}></img></span>{entree.restaurant.name}</h4>
       <div>{usersInputOrRating}</div>
     </div>
   )
