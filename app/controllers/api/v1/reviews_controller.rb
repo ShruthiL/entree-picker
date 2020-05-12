@@ -1,10 +1,11 @@
 class Api::V1::ReviewsController < ApplicationController
+  before_action :authenticate_user!, except:[:index]
   protect_from_forgery unless: -> { request.format.json? }
 
   def create
     new_review = Review.new(review_params)
     new_review.user = current_user
-    # new_review = Review.new(review_params, user: current_user)
+
     if new_review.save
       render json: new_review
     else

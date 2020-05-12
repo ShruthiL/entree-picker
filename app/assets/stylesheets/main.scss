@@ -1,11 +1,21 @@
+@import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 body {
   font-family: 'Rajdhani', sans-serif;
   background-color: #020203;
-  color: rgba(239,191,164,0.94);
+  color: #eebea4;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #eebea4;
+}
+
+label {
+  color: #eebea4;
+  font-size: 16px;
+}
 
 nav {
   display: flex;
@@ -33,34 +43,43 @@ nav {
   z-index: -1;
 }
 
-input.display-none{
+input {
   max-width: 300px;
+  border-radius: 20px;
+}
+
+input.display-none{
   display: inline;
 }
 
-.new_user {
-
+.top-bar-section {
+  li {
+    display: inline;
+    font-weight: 800;
+    font-size: 18px;
+    margin: 20px;
+  }
 }
 
 .grid-container {
-    // margin: 3em 15em;
-    // text-align: center;
-    background-color: #232323;
-    margin: 20px 200px;
-    text-align: center;
-    color: rgba(239,191,164,0.94);
-
+  // margin: 3em 15em;
+  // text-align: center;
+  // background-color: #232323;
+  margin: 5px 200px;
+  text-align: center;
+  color: #eebea4;
+  padding: 20px 0;
 }
 
 label.entree-text {
-  color: rgba(239,191,164,0.94);
+  color: #eebea4;
   font-size: 1rem;
   font-weight: 600;
 
 }
 
 .entree-link {
-  color: rgba(239,191,164,0.94);
+  color: #eebea4;
 }
 
 .satisfy {
@@ -91,11 +110,6 @@ label.entree-text {
 }
 
 form {
-  // label {
-  //   input {
-  //     max-width: 300px;
-  //   }
-  // }
   .button-group {
     display: block;
   }
@@ -106,37 +120,148 @@ form {
 }
 
 .entree-picker-container {
-  margin-top: 60px;
+  background-color: #232323;
+  margin-top: 20px;
+  padding-top: 20px;
   input {
-    width: 300px;
+    // max-width: 300px;
     margin: 0 auto;
   }
+  .callout {
+    border: none;
+    background-color: #232323;
+  }
 }
 
-.callout{
-  background-color: none !important;
-}
-
-.popular-entree {
+.random-entree {
+  background-color: #232323;
+  padding: 20px 0;
   .entree-image {
-    width: 50px;
+    width: 40px;
+    margin-right: 2px;
   }
   .restaurant-image {
-    width: 46px;
+    width: 40px;
     margin-right: 4px;
   }
 }
 
 .entree-history {
-  background-color: none;
+  background-color: transparent !important;
   h4 {
     font-family: 'Satisfy', cursive;
   }
   .callout {
-    min-height: 270px;
+    min-height: 300px;
     background-color: #232323;
-    font-family: 'Satisfy', cursive;
-    color: rgba(239,191,164,0.94);
+    color: #eebea4;
     vertical-align: middle;
   }
+  input {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  .entree-image {
+    width: 25px;
+    margin-right: 10px;
+  }
+  .restaurant-image {
+    width: 25px;
+    margin-right: 10px;
+  }
+}
+
+.review-tile {
+  // color: #f6f1cf;
+  margin-top: 20px;
+  padding: 20px 0;
+  border: 1px solid #fa9500;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.user-experience {
+  background-color: #232323;
+  padding-top: 50px 0;
+  .callout {
+    background-color: #232323;
+    color: #eebea4;
+    vertical-align: middle;
+  }
+  .review-tile {
+    margin: 0 250px;
+  }
+  input {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+}
+
+.entree-home {
+  .about-site {
+    background-color: #232323;
+    padding: 40px;
+  }
+  .callout {
+    margin-top: 10px;
+    background-color: #232323;
+    color: #eebea4;
+  }
+  .display-flex {
+    display: inline-flex;
+  }
+  .fa-user {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    color: #fa9500;
+  }
+
+  .tip {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    background: transparent;
+    border: 10px solid #fa9500;
+  }
+
+  .tip-left {
+    top: 10px;
+    left: -25px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+   }
+
+   .dialogbox .body {
+    position: relative;
+    width: 250px;
+    height: 80px;
+    // margin: 20px 10px;
+    padding: 5px;
+    background-color: #464646;
+    border-radius: 3px;
+    border: 1px solid #fa9500;
+  }
+
+  .body .message {
+    min-height: 30px;
+    border-radius: 3px;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .user {
+    font-size: 12px;
+    float: right;
+    margin: 10px;
+  }
+
+  .user-reviews-text {
+    background-color: #232323;
+    padding: 20px 0;
+  }
+
 }
