@@ -58,7 +58,6 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
       if (body.errors){
         // setErrors(body.errors)
       } else {
@@ -98,7 +97,6 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
       if (body.errors){
         // setErrors(body.errors)
       } else {

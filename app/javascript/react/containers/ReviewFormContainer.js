@@ -57,7 +57,6 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm, 
     })
     .then((response) => response.json())
     .then((body) => {
-      console.log(body)
       if (body.errors){
         setErrors(body.errors)
       } else {
@@ -100,7 +99,6 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm, 
     })
     .then((response) => response.json())
     .then((body) => {
-      console.log(body)
       if (body.errors){
         setErrors(body.errors)
       } else {

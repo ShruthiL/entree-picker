@@ -29,7 +29,6 @@ const ReviewTileContainer = ({entree, review, fetchPickedReviews, handleShowRevi
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
       if (body.errors){
         setErrors(parsedData.errors)
       } else {
@@ -59,7 +58,6 @@ const ReviewTileContainer = ({entree, review, fetchPickedReviews, handleShowRevi
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
       if (body.errors){
         setErrors(parsedData.errors)
       } else {

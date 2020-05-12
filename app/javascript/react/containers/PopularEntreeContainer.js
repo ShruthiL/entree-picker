@@ -28,7 +28,7 @@ const PopularEntreeContainer = ({location}) => {
        prevPopularEntree: popularEntree
      }
     }
-    fetch("/api/v1/menu_items", {
+    fetch("/api/v1/picked_entrees", {
       credentials: "same-origin",
       method: "POST",
       body: JSON.stringify(requestBody),
@@ -52,7 +52,6 @@ const PopularEntreeContainer = ({location}) => {
           setErrors(true)
           setPopularEntree({})
         } else {
-          console.log(body)
           setPopularEntree(body)
           setEntreeReviews(body.reviews)
         }
