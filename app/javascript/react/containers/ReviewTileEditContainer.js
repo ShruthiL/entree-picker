@@ -19,10 +19,10 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
 
   const validForSubmission = () => {
     let submitErrors = {};
-    if (reviewRecord["rating"].trim() === "") {
+    if (reviewRecord["rating"].trim() === "" || reviewRecord["rating"].trim() < 0 || reviewRecord["rating"].trim() > 6 ) {
       submitErrors = {
         ...submitErrors,
-        ["rating"]: "Please select a rating"
+        ["rating"]: "Please provide a rating between 0 to 5"
       };
     }
 
@@ -111,12 +111,6 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
     event.preventDefault();
     if (validForSubmission()) {
       siteReviewForm ? handleSiteReviewEdit() : handlePickedReviewEdit()
-      // if (siteReviewForm) {
-      //
-      //
-      // } else {
-      //
-      // }
     }
   };
 
@@ -141,7 +135,7 @@ const ReviewTileEditContainer = ({entree, review, fetchPickedReviews, editReview
 
         <label>
           Comments:
-          <input
+          <textarea
             type="text"
             id="comments"
             onChange={handleChange}

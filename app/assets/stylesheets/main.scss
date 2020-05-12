@@ -43,12 +43,12 @@ nav {
   z-index: -1;
 }
 
-input {
+input, textarea {
   max-width: 300px;
   border-radius: 20px;
 }
 
-input.display-none{
+input.display-none, textarea.display-none{
   display: inline;
 }
 
@@ -128,7 +128,7 @@ form {
   background-color: #232323;
   margin-top: 20px;
   padding-top: 20px;
-  input {
+  input, textarea {
     // max-width: 300px;
     margin: 0 auto;
   }
@@ -160,7 +160,7 @@ form {
     color: #eebea4;
     vertical-align: middle;
   }
-  input {
+  input, textarea {
     margin: 0 auto 20px auto;
     display: block;
   }
@@ -194,7 +194,7 @@ form {
   .review-tile {
     margin: 0 250px;
   }
-  input {
+  input, textarea {
     margin: 0 auto 20px auto;
     display: block;
   }

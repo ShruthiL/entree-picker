@@ -18,10 +18,10 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm, 
 
   const validFormSubmission = () => {
     let submitErrors = {};
-    if (reviewRecord["rating"].trim() === "") {
+    if (reviewRecord["rating"].trim() === "" || reviewRecord["rating"].trim() < 0 || reviewRecord["rating"].trim() > 6 ) {
       submitErrors = {
         ...submitErrors,
-        ["rating"]: "Please select a rating"
+        ["rating"]: "Please provide a rating between 0 to 5"
       };
     }
 
@@ -140,7 +140,7 @@ const ReviewFormContainer = ({entree, fetchPickedReviews, handleShowReviewForm, 
 
         <label>
           Comments:
-          <input
+          <textarea
             type="text"
             id="comments"
             onChange={handleChange}

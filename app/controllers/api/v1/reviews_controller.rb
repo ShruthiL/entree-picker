@@ -13,6 +13,10 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    render json: Review.find(params[:id])
+  end
+
   def update
     updated_review = Review.find(params[:id])
     if updated_review.update(review_params)
