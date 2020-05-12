@@ -45,7 +45,7 @@ const UserExperienceContainer = (props) => {
   }
 
   return (
-    <div className="user-experience">
+    <div className="user-experience background-color">
       <h4>We would love to know your experience with the Entrée Picker</h4>
         {siteReviewTile}
     </div>

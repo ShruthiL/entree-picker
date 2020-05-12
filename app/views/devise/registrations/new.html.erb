@@ -1,54 +1,57 @@
-<h2>Sign up</h2>
+<div class="background-color">
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name, "First Name", class: "entree-text" %>
-    <%= f.text_field :first_name, class: 'display-none', autofocus: true, autocomplete: "first_name" %>
-  </div>
+    <div class="field">
+      <%= f.label :first_name, "First Name", class: "entree-text" %>
+      <%= f.text_field :first_name, class: 'display-none', autofocus: true, autocomplete: "first_name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name, "Last Name", class: "entree-text" %>
-    <%= f.text_field :last_name, class: 'display-none', autofocus: true, autocomplete: "last_name" %>
-  </div>
+    <div class="field">
+      <%= f.label :last_name, "Last Name", class: "entree-text" %>
+      <%= f.text_field :last_name, class: 'display-none', autofocus: true, autocomplete: "last_name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :user_name, "User Name", class: "entree-text" %>
-    <%= f.text_field :user_name, class: 'display-none', autofocus: true, autocomplete: "user_name" %>
-  </div>
+    <div class="field">
+      <%= f.label :user_name, "User Name", class: "entree-text" %>
+      <%= f.text_field :user_name, class: 'display-none', autofocus: true, autocomplete: "user_name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email, class: "entree-text" %>
-    <%= f.email_field :email, class: 'display-none', autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email, class: "entree-text" %>
+      <%= f.email_field :email, class: 'display-none', autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :phone_number, "Phone Number", class: "entree-text" %>
-    <%= f.telephone_field :phone_number, class: 'display-none', autofocus: true, autocomplete: "phone_number" %>
-  </div>
+    <div class="field">
+      <%= f.label :phone_number, "Phone Number", class: "entree-text" %>
+      <%= f.telephone_field :phone_number, class: 'display-none', autofocus: true, autocomplete: "phone_number" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :zip_code, "Zip Code", class: "entree-text" %>
-    <%= f.number_field :zip_code, class: 'display-none', autofocus: true, autocomplete: "zip_code" %>
-  </div>
+    <div class="field">
+      <%= f.label :zip_code, "Zip Code", class: "entree-text" %>
+      <%= f.number_field :zip_code, class: 'display-none', autofocus: true, autocomplete: "zip_code" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, class: "entree-text" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, class: 'display-none', autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password, class: "entree-text" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, class: 'display-none', autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, class: "entree-text" %>
-    <%= f.password_field :password_confirmation, class: 'display-none', autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation, class: "entree-text" %>
+      <%= f.password_field :password_confirmation, class: 'display-none', autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class: "button" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Sign up", class: "button" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+
+</div>

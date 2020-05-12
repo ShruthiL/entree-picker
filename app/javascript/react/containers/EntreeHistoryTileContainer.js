@@ -116,7 +116,7 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
     usersInputOrRating =
     <div>
       {entree.reviews === "" ?
-      <div><button className="button" onClick={handleClickVisited}>Visited? Then please provide your rating</button>
+      <div><button className="button" onClick={handleClickVisited}>Visited? Please provide your rating</button>
           <button className="button" onClick={handleClickNotInterested}>Not interested anymore</button>
       </div> :
       reviewTile}
