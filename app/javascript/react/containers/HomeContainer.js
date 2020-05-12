@@ -34,27 +34,6 @@ const HomeContainer = (props) => {
   if (siteReviews.length == 0) {
     reviews = <></>
   } else {
-    // <div className="site-reviews cell medium-6" key={review.id}>
-    //   <div className="callout">
-    //     <div class="media-object">
-    //       <div class="media-object-section">
-    //         <div class="thumbnail">
-    //           <span className="user-icon"><FontAwesomeIcon icon={faUser} /></span>
-    //         </div>
-    //       </div>
-    //       <div class="media-object-section">
-    //         <div class="dialogbox">
-    //           <div class="body">
-    //             <span class="tip tip-left"></span>
-    //             <div class="message">
-    //               {review.comments} - {review.rating}
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     reviews = siteReviews.map(review => {
       return (
         <div className="site-reviews cell medium-6" key={review.id}>
