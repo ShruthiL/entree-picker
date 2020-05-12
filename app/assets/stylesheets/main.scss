@@ -52,6 +52,11 @@ input.display-none{
   display: inline;
 }
 
+.background-color {
+  background-color: #232323;
+  padding: 20px 0;
+}
+
 .top-bar-section {
   li {
     display: inline;
@@ -134,8 +139,6 @@ form {
 }
 
 .random-entree {
-  background-color: #232323;
-  padding: 20px 0;
   .entree-image {
     width: 40px;
     margin-right: 2px;
@@ -183,8 +186,6 @@ form {
 }
 
 .user-experience {
-  background-color: #232323;
-  padding-top: 50px 0;
   .callout {
     background-color: #232323;
     color: #eebea4;

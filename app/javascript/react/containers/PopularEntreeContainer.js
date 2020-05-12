@@ -71,7 +71,7 @@ const PopularEntreeContainer = ({location}) => {
       return <><LoaderComponent /></>
     } else {
       return (
-        <div className="random-entree">
+        <div className="random-entree background-color">
           <h5 className="satisfy">We picked this wonderful entrée today</h5>
           <h4 className="satisfy"><span><img className="entree-image" src={EntreeImg}></img></span> {popularEntree.name}</h4>
           <h4 className="satisfy"><span><img className="restaurant-image" src={RestaurantImg}></img></span> {popularEntree.restaurant.name}</h4>
