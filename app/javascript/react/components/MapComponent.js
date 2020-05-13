@@ -9,8 +9,6 @@ const MapComponent = ({location}) => {
     });
     const marker = new google.maps.Marker({position: uluru, map: map});
     google.maps.event.addListener(marker, 'click', function () {
-      // window.open("https://www.google.com/maps/@442.3611,-71.0570");
-      // window.open("https://www.google.com/maps?z=12&t=m&q=loc:42.1340298+-71.10118109999999");
       window.open(`https://www.google.com/maps?z=12&t=m&q=loc:${location.lat}+${location.lon}`);
    });
    marker.setMap( map );
@@ -21,11 +19,3 @@ const MapComponent = ({location}) => {
 };
 
 export default MapComponent;
-
-function loadJS(src) {
-  let ref = window.document.getElementsByTagName("script")[0];
-  let script = window.document.createElement("script");
-  script.src = src;
-  script.async = true;
-  ref.parentNode.insertBefore(script, ref);
-}

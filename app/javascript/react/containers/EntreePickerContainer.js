@@ -50,8 +50,8 @@ const EntreePickerContainer = (props) => {
 
   return (
     <div className="entree-picker-container">
-      <button className="button" onClick={handlePickRandomEntree}>Entree Picker By Location</button>
-      <button className="button" onClick={handlePickRandomMenuByOptions}>Entree Picker By Options</button>
+      <button className="button" onClick={handlePickRandomEntree}>Entrée Picker By Location</button>
+      <button className="button" onClick={handlePickRandomMenuByOptions}>Entrée Picker By Options</button>
       {showOptions ? <EntreePickerByOptionsFormContainer /> : <></>}
     </div>
   );

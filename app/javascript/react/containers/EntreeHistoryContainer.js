@@ -10,7 +10,6 @@ const EntreeHistoryContainer = (props) => {
   },[])
 
   const fetchPickedReviews = () => {
-    console.log('check');
     fetch(`/api/v1/picked_entrees`)
       .then((response) => {
         if (response.ok) {
@@ -23,7 +22,6 @@ const EntreeHistoryContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        console.log('check output')
         setEntreeHistory(body);
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));

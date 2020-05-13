@@ -37,7 +37,6 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
       if (body.errors){
       // setErrors(parsedData.errors)
       } else {
@@ -68,7 +67,6 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
       })
       .then(response => response.json())
       .then(body => {
-        console.log(body)
         if (body.errors){
         // setErrors(parsedData.errors)
         } else {
