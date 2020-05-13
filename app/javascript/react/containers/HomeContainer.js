@@ -59,14 +59,16 @@ const HomeContainer = (props) => {
   return (
     <div className="entree-home">
       <div className="about-site">
-        <h4>Hi, Welcome to the Entrée Picker</h4><br />
+        <h2>Hi, Welcome to the Entrée Picker</h2>
         <h5>Are you not able to decide what to eat for lunch or dinner? You have come to the right place.
           We will pick an entree for you, so you don't have to think and search what to eat.</h5>
       </div>
       <br />
-      <div className="user-reviews-text"><h5>What our users think about Entrée Picker</h5></div>
-      <div className="grid-x grid-margin-x">
-        {reviews}
+      <div className="user-reviews-text">
+        <h5>What our users think about Entrée Picker</h5>
+        <div className="grid-x grid-margin-x">
+          {reviews}
+        </div>
       </div>
     </div>
   );

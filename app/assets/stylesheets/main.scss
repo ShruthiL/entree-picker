@@ -2,19 +2,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
+// #e85d20
 body {
   font-family: 'Rajdhani', sans-serif;
-  background-color: #020203;
-  color: #eebea4;
+  background-color: gray;
+  color: #e85d20;
+
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #eebea4;
+.top-bar {
+  background-color: #308093;
+  height: 60px;
+  a {
+    color: #fdfffc;
+  }
+  ul {
+    background-color: transparent;
+    margin-bottom: 0;
+  }
 }
+
+// h1, h2, h3, h4, h5, h6 {
+//   // color: #eebea4;
+//   font-family: 'Satisfy', cursive;
+// }
 
 label {
-  color: #eebea4;
-  font-size: 16px;
+  color: #e85d20;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 nav {
@@ -32,9 +48,12 @@ nav {
 
 .watermark:after {
   content: "";
-  background: url(bg_thai.jpg)no-repeat;
+  background: url(bg_4.jpg);
+  background-repeat: repeat-y;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
   background-size: cover;
-  opacity: 0.3;
+  opacity: 0.6;
   top: 0;
   left: 0;
   bottom: 0;
@@ -53,7 +72,8 @@ input.display-none, textarea.display-none{
 }
 
 .background-color {
-  background-color: #232323;
+  background-color: #fdfffc;
+  border-radius: 10px;
   padding: 20px 0;
 }
 
@@ -65,26 +85,26 @@ input.display-none, textarea.display-none{
     margin: 20px;
   }
 }
-
+// #F26C29
 .grid-container {
   // margin: 3em 15em;
   // text-align: center;
-  // background-color: #232323;
-  margin: 5px 200px;
+  // background-color: #fdfffc;
+  margin: 40px 200px;
   text-align: center;
-  color: #eebea4;
+  color: #e85d20;
   padding: 20px 0;
 }
 
 label.entree-text {
-  color: #eebea4;
+  color: #e85d20;
   font-size: 1rem;
   font-weight: 600;
 
 }
 
 .entree-link {
-  color: #eebea4;
+  color: #e85d20;
 }
 
 .satisfy {
@@ -99,7 +119,11 @@ label.entree-text {
 }
 
 .errorText {
-  background-color: red;
+  background-color: #f7e4e1;
+}
+
+.flash-messages {
+  background-color: #f7e4e1;
 }
 
 .button {
@@ -108,6 +132,10 @@ label.entree-text {
   margin-right: 10px;
   min-width: 150px;
   font-weight: 700;
+  background-color: #308093;
+}
+.button:focus {
+  outline:0;
 }
 
 .margin-auto {
@@ -125,8 +153,8 @@ form {
 }
 
 .entree-picker-container {
-  background-color: #232323;
-  margin-top: 20px;
+  background-color: #fdfffc;
+  border-radius: 10px;
   padding-top: 20px;
   input, textarea {
     // max-width: 300px;
@@ -134,7 +162,8 @@ form {
   }
   .callout {
     border: none;
-    background-color: #232323;
+    background-color: #fdfffc;
+    border-radius: 10px;
   }
 }
 
@@ -156,8 +185,9 @@ form {
   }
   .callout {
     min-height: 300px;
-    background-color: #232323;
-    color: #eebea4;
+    background-color: #fdfffc;
+    border-radius: 10px;
+    color: #e85d20;
     vertical-align: middle;
   }
   input, textarea {
@@ -179,7 +209,7 @@ form {
   // color: #f6f1cf;
   margin-top: 20px;
   padding: 20px 0;
-  border: 1px solid #fa9500;
+  border: 1px solid #1779ba;
   p {
     margin-bottom: 0;
   }
@@ -187,8 +217,9 @@ form {
 
 .user-experience {
   .callout {
-    background-color: #232323;
-    color: #eebea4;
+    background-color: #fdfffc;
+    border-radius: 10px;
+    color: #e85d20;
     vertical-align: middle;
   }
   .review-tile {
@@ -199,16 +230,23 @@ form {
     display: block;
   }
 }
-
+// #e85d20
+// fdfffc
+// #eebea4
 .entree-home {
   .about-site {
-    background-color: #232323;
+    background-color: #fdfffc;
+    border-radius: 10px;
     padding: 40px;
+    h2 {
+      font-family: 'Satisfy', cursive;
+    }
   }
   .callout {
     margin-top: 10px;
-    background-color: #232323;
-    color: #eebea4;
+    background-color: #fdfffc;
+    border: none;
+    color: #e85d20;
   }
   .display-flex {
     display: inline-flex;
@@ -217,7 +255,8 @@ form {
     width: 50px;
     height: 50px;
     margin: 0 10px;
-    color: #fa9500;
+    color: #1779ba;
+    // color: #308093;
   }
 
   .tip {
@@ -225,7 +264,7 @@ form {
     height: 0px;
     position: absolute;
     background: transparent;
-    border: 10px solid #fa9500;
+    border: 10px solid #1779ba;
   }
 
   .tip-left {
@@ -238,13 +277,13 @@ form {
 
    .dialogbox .body {
     position: relative;
-    width: 250px;
+    width: 300px;
     height: 80px;
     // margin: 20px 10px;
     padding: 5px;
-    background-color: #464646;
+    background-color: #fdfffc;
     border-radius: 3px;
-    border: 1px solid #fa9500;
+    border: 1px solid #1779ba;
   }
 
   .body .message {
@@ -253,16 +292,21 @@ form {
     font-family: Arial;
     font-size: 14px;
     line-height: 1.5;
+    text-align: left;
+    padding-left: 20px;
   }
   .user {
-    font-size: 12px;
+    font-size: 14px;
     float: right;
     margin: 10px;
+    font-family: 'Satisfy', cursive;
   }
 
   .user-reviews-text {
-    background-color: #232323;
+    background-color: #fdfffc;
     padding: 20px 0;
+    color: #e85d20;
+    border-radius: 10px;
   }
 
 }
