@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #   root :to => "homes#authenticate"
   # end
 
+  get '/switch_theme', to: "homes#switch_theme"
   get '/entree_picker', to: "homes#authenticate"
   get '/picked_entree', to: "homes#authenticate"
   get '/entree_history', to: "homes#authenticate"

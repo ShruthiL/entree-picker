@@ -12,37 +12,6 @@ const HomeContainer = (props) => {
     fetchSiteReviews();
   },[])
 
-  const handleChangeThemeOnclick = () => {
-    const formPayload = {
-      "test": "test"
-    }
-    fetch("/api/v1/change_themes", {
-      credentials: "same-origin",
-      method: "POST",
-      body: JSON.stringify(formPayload),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-    .then((response) => {
-      if (response.ok) {
-        return response;
-      } else {
-        response.json().then((body) => setErrors(body.error));
-        let errorMessage = `${response.status} (${response.statusText})`;
-        let error = new Error(errorMessage);
-        throw error;
-      }
-    })
-    .then((response) => response.json())
-    .then((body) => {
-      console.log(body);
-      window.location.reload(); 
-    })
-    .catch((error) => console.error(`Error in fetch: ${error.message}`));
-  }
-
   const fetchSiteReviews = () => {
       fetch(`/api/v1/site_reviews`)
       .then((response) => {
@@ -89,7 +58,6 @@ const HomeContainer = (props) => {
 
   return (
     <div className="entree-home">
-      <button type="submit" onClick={handleChangeThemeOnclick}>Change Theme</button>
       <div className="about-site">
         <h2>Hi, Welcome to the Entrée Picker</h2>
         <h5>Are you not able to decide what to eat for lunch or dinner? You have come to the right place.

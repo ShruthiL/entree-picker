@@ -8,6 +8,16 @@ body {
   color: #eebea4;
 }
 
+.top-bar {
+  background-color: transparent;
+  a {
+    color: #fa9500;
+  }
+  ul {
+    background-color: transparent;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #eebea4;
 }
@@ -54,6 +64,7 @@ input.display-none{
 
 .background-color {
   background-color: #232323;
+  border-radius: 10px;
   padding: 20px 0;
 }
 
@@ -126,15 +137,15 @@ form {
 
 .entree-picker-container {
   background-color: #232323;
-  margin-top: 20px;
   padding-top: 20px;
+  border-radius: 10px;
   input {
-    // max-width: 300px;
     margin: 0 auto;
   }
   .callout {
     border: none;
     background-color: #232323;
+    border-radius: 10px;
   }
 }
 
@@ -157,6 +168,7 @@ form {
   .callout {
     min-height: 300px;
     background-color: #232323;
+    border-radius: 10px;
     color: #eebea4;
     vertical-align: middle;
   }
@@ -188,6 +200,7 @@ form {
 .user-experience {
   .callout {
     background-color: #232323;
+    border-radius: 10px;
     color: #eebea4;
     vertical-align: middle;
   }
@@ -203,7 +216,11 @@ form {
 .entree-home {
   .about-site {
     background-color: #232323;
+    border-radius: 10px;
     padding: 40px;
+    h2 {
+      font-family: 'Satisfy', cursive;
+    }
   }
   .callout {
     margin-top: 10px;
@@ -263,6 +280,7 @@ form {
   .user-reviews-text {
     background-color: #232323;
     padding: 20px 0;
+    border-radius: 10px;
   }
 
 }

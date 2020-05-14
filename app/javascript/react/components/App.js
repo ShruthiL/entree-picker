@@ -13,8 +13,6 @@ export const App = (props) => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomeContainer}/>
-          <Route exact path="/dark" component={HomeContainer}/>
-          <Route exact path="/light" component={HomeContainer}/>
           <Route exact path="/entree_picker" component={EntreePickerContainer}/>
           <Route exact path="/picked_entree" component={PopularEntreeContainer}/>
           <Route exact path="/entree_history" component={EntreeHistoryContainer}/>
