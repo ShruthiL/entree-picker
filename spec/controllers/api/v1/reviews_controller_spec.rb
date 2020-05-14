@@ -113,7 +113,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
         user: user1,
         menu_item: menu_item1,
         rating: 5,
-        comments: "Such a good game"
+        comments: "Such a good entree"
       )
       get :edit, params: { id: existing_review.id }
 
@@ -128,7 +128,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
         user: user1,
         menu_item: menu_item1,
         rating: 5,
-        comments: "Such a good game"
+        comments: "Such a good entree"
       )
       get :edit, params: { id: existing_review.id }
       api_response = JSON.parse(response.body)
@@ -148,7 +148,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
         user: user1,
         menu_item: menu_item1,
         rating: 5,
-        comments: "Such a good game"
+        comments: "Such a good entree"
       )
 
       existing_review2 = Review.create(
@@ -160,6 +160,164 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       get :edit, params: { id: existing_review.id }
       api_response = JSON.parse(response.body)
       expect(api_response['id']).not_to eq existing_review2.id
+    end
+  end
+
+  describe("POST#update") do
+    let!(:restaurant1) { Restaurant.create(
+            restaurant_id: "resid",
+            name: "restaurant")
+    }
+    let!(:menu_item1) { MenuItem.create(
+          name: "menu1",
+          price: 3,
+          restaurant_id: restaurant1.id
+        )
+    }
+
+    let!(:user1) { User.create(
+      email: "email@email.com",
+      user_name: "user1",
+      password: "password",
+      phone_number: 123456789,
+      zip_code: 123456)
+    }
+    let!(:user2) { User.create(
+      email: "email2@email.com",
+      user_name: "user2",
+      password: "password",
+      phone_number: 123456789,
+      zip_code: 123456)
+    }
+
+    it "does not add an additional review to the db" do
+      sign_in user1
+
+      new_review = Review.create(
+        user: user1,
+        menu_item: menu_item1,
+        rating: 5,
+        comments: "Such a good entree"
+      )
+      before_update_count = Review.count
+
+      updated_review_params = {
+        rating: 4,
+        comments: "Such a good entree"
+      }
+      patch :update, params: { id: new_review.id, review: updated_review_params }
+      after_update_count = Review.count
+
+      expect(before_update_count).to eq after_update_count
+    end
+
+    it "returns the updated review" do
+      sign_in user1
+
+      new_review = Review.create(
+        user: user1,
+        menu_item: menu_item1,
+        rating: 5,
+        comments: "Such a good entree"
+      )
+
+      updated_review_params = {
+        rating: 4,
+        comments: "Such a good entree"
+      }
+
+      patch :update, params: { id: new_review.id, review: updated_review_params }
+      api_response = JSON.parse(response.body)
+
+      expect(api_response['id']).to eq new_review.id
+      expect(api_response['comments']).to eq updated_review_params[:comments]
+      expect(api_response['rating']).to eq updated_review_params[:rating]
+      expect(api_response['user_id']).to eq new_review.user.id
+    end
+
+    it "returns errors with poor data" do
+      sign_in user2
+
+      new_review = Review.create(
+        user: user1,
+        menu_item: menu_item1,
+        rating: 5,
+        comments: "Such a good entree"
+      )
+
+      updated_review_params = {
+        rating: "",
+        comments: "Such a good entree"
+      }
+
+      patch :update, params: { id: new_review.id, review: updated_review_params }
+      api_response = JSON.parse(response.body)
+
+      expect(api_response['errors']).to eq "Rating can't be blank and Rating is not a number"
+    end
+  end
+
+  describe("POST#destroy") do
+    let!(:restaurant1) { Restaurant.create(
+            restaurant_id: "resid",
+            name: "restaurant")
+    }
+    let!(:menu_item1) { MenuItem.create(
+          name: "menu1",
+          price: 3,
+          restaurant_id: restaurant1.id
+        )
+    }
+
+    let!(:user1) { User.create(
+      email: "email@email.com",
+      user_name: "user1",
+      password: "password",
+      phone_number: 123456789,
+      zip_code: 123456)
+    }
+    let!(:user2) { User.create(
+      email: "email2@email.com",
+      user_name: "user2",
+      password: "password",
+      phone_number: 123456789,
+      zip_code: 123456)
+    }
+
+    it "removes a review from the database" do
+      sign_in user1
+
+      new_review = Review.create(
+        user: user1,
+        menu_item: menu_item1,
+        rating: 5,
+        comments: "Such a good entree"
+      )
+
+      before_delete_count = Review.count
+      delete :destroy, params: { id: new_review.id }
+      after_delete_count = Review.count
+
+      expect(after_delete_count).to eq(before_delete_count - 1)
+    end
+
+    it "returns true when it removes the review" do
+      sign_in user1
+
+      new_review = Review.create(
+        user: user1,
+        menu_item: menu_item1,
+        rating: 5,
+        comments: "Such a good entree"
+      )
+
+      delete :destroy, params: { id: new_review.id }
+      api_response = JSON.parse(response.body)
+
+      expect(api_response['id']).to eq new_review.id
+      expect(api_response['comments']).to eq new_review[:comments]
+      expect(api_response['rating']).to eq new_review[:rating]
+      expect(api_response['user_id']).to eq new_review.user.id
     end
   end
 end
