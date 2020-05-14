@@ -12,6 +12,6 @@
  *
  *= require ./common/foundation_and_overrides
  *= require_self
- *= require_directory ./light_mode
+ *= require_directory ./dark_mode
  *= require_directory ./common
  */
