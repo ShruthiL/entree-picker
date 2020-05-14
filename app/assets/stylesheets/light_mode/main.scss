@@ -48,7 +48,9 @@ nav {
 
 .watermark:after {
   content: "";
-  background: url(bg_4.jpg);
+  // background: image-url(bg_4.jpg);
+  background: url(/assets/bg_4.jpg);
+  // background: url(../../../assets/images/bg_4.jpg);
   background-repeat: repeat-y;
   // background-repeat: no-repeat;
   // background-attachment: fixed;
