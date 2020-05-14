@@ -41,16 +41,16 @@ nav {
   flex-wrap: wrap;
 }
 
-.watermark {
+.watermark:after {
   content: "";
   // background: image-url(bg_4.jpg);
-  background: url(/assets/bg_4_65.jpg);
+  background: url(/assets/bg_4.jpg);
   // background: url(../../../assets/images/bg_4.jpg);
-  // background-repeat: repeat-y;
+  background-repeat: repeat-y;
   // background-repeat: no-repeat;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-size: cover;
-  // opacity: 0.6;
+  opacity: 0.6;
   top: 0;
   left: 0;
   bottom: 0;

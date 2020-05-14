@@ -7,14 +7,24 @@ const EntreePickerContainer = (props) => {
   const [ location, setLocation ] = useState({})
   const [ showOptions, setShowOptions ] = useState(false)
   const [ shouldRedirect, setShouldRedirect ] = useState(false)
+  const [ locationPermission, setLocationPermission] = useState(true)
+  const [ locationAvailabe, setLocationAvailable ] = useState(true)
 
   useEffect(() => {
     let lat, lon;
     if ("geolocation" in navigator) {
-      console.log("Available");
+      setLocationAvailable(true)
     } else {
-      console.log("Not Available");
+      setLocationAvailable(false)
     }
+
+    navigator.geolocation.watchPosition(function(position) {
+      setLocationPermission(true)
+    },
+    function(error) {
+      if (error.code == error.PERMISSION_DENIED)
+        setLocationPermission(false)
+    });
 
     navigator.geolocation.getCurrentPosition(function(position) {
      lat = position.coords.latitude;
@@ -50,7 +60,9 @@ const EntreePickerContainer = (props) => {
 
   return (
     <div className="entree-picker-container">
-      <button className="button" onClick={handlePickRandomEntree}>Entrée Picker By Location</button>
+      { locationAvailabe ? <></> : <div>Your browswer doesn't support location, please pick entrée by options</div> }
+      { locationPermission ? <></> : <div>Please allow access to you location to search by location.</div> }
+      <button disabled={!locationPermission || !locationAvailabe} className="button" onClick={handlePickRandomEntree}>Entrée Picker By Location</button>
       <button className="button" onClick={handlePickRandomMenuByOptions}>Entrée Picker By Options</button>
       {showOptions ? <EntreePickerByOptionsFormContainer /> : <></>}
     </div>
