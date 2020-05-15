@@ -4,13 +4,54 @@ import LoaderComponent from '../components/LoaderComponent'
 import Usericon1 from "../../../assets/images/user-icon3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import ChartsContainer from "./ChartsContainer"
 
 const HomeContainer = (props) => {
   const [ siteReviews, setSiteReviews ] = useState([])
+  const [ chartsData, setChartsData ] = useState([])
 
   useEffect(() => {
     fetchSiteReviews();
+    fetchAllPickedEntrees()
   },[])
+
+  const fetchAllPickedEntrees = () => {
+    fetch(`/api/v1/all_users_picked_entrees`)
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`;
+          let error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        handleChartsData(body)
+      })
+      .catch((error) => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  const handleChartsData = (allPickedEntrees) => {
+    let responseData = {}
+    const keys = Object.keys(allPickedEntrees);
+
+    for (let i = 0; i < keys.length; i++) {
+      if (i === 0) {
+        responseData[keys[i]] = allPickedEntrees[keys[i]]
+      } else {
+        responseData[keys[i]] = allPickedEntrees[keys[i]] + responseData[keys[i - 1]]
+      }
+    }
+
+    let cumulativeData = [["dates", "data"]]
+      for(const ele in responseData) {
+        cumulativeData.push([ele, responseData[ele]])
+    }
+
+    setChartsData(cumulativeData)
+  }
 
   const fetchSiteReviews = () => {
       fetch(`/api/v1/site_reviews`)
@@ -36,7 +77,7 @@ const HomeContainer = (props) => {
   } else {
     reviews = siteReviews.map(review => {
       return (
-        <div className="site-reviews cell medium-6" key={review.id}>
+        <div className="site-reviews cell" key={review.id}>
           <div className="callout">
             <div className="display-flex">
               <div><p><span className="user-icon"><FontAwesomeIcon icon={faUser} /></span></p></div>
@@ -66,8 +107,15 @@ const HomeContainer = (props) => {
       <br />
       <div className="user-reviews-text">
         <h5>What our users think about Entrée Picker</h5>
-        <div className="grid-x grid-margin-x">
-          {reviews}
+        <div className="grid-x">
+          <div className="site-reviews cell medium-6">
+            <div><ChartsContainer chartsData={chartsData} homePage={true}/></div>
+          </div>
+          <div className="site-reviews cell medium-6">
+            <div className="grid-x margin-right">
+              {reviews}
+            </div>
+          </div>
         </div>
       </div>
     </div>

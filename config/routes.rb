@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :picked_entrees, only: [:index, :create, :update, :destroy]
       resources :reviews, only: [:edit, :create, :update, :destroy]
       resources :site_reviews, only: [:index, :create, :update, :destroy]
+      resources :current_user_picked_entrees, only: [:index]
+      resources :all_users_picked_entrees, only: [:index]
     end
   end
 end
