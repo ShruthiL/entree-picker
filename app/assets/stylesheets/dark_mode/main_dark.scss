@@ -16,6 +16,9 @@ body {
   ul {
     background-color: transparent;
   }
+  // h2 {
+  //   font-family: 'Rajdhani', sans-serif;
+  // }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -53,8 +56,14 @@ nav {
   z-index: -1;
 }
 
-input {
-  max-width: 300px;
+.new_user {
+  input, textarea {
+    max-width: 30%;
+  }
+}
+
+input, textarea {
+  max-width: 75%;
   border-radius: 20px;
 }
 
@@ -78,10 +87,8 @@ input.display-none{
 }
 
 .grid-container {
-  // margin: 3em 15em;
-  // text-align: center;
-  // background-color: #232323;
-  margin: 5px 200px;
+  // margin: 5% 15%;
+  margin: 0 15%;
   text-align: center;
   color: #eebea4;
   padding: 20px 0;
@@ -110,7 +117,11 @@ label.entree-text {
 }
 
 .errorText {
-  background-color: red;
+  background-color: #f7e4e1;
+}
+
+.flash-messages {
+  background-color: #f7e4e1;
 }
 
 .button {
@@ -119,6 +130,10 @@ label.entree-text {
   margin-right: 10px;
   min-width: 150px;
   font-weight: 700;
+}
+
+.button:focus {
+  outline:0;
 }
 
 .margin-auto {
@@ -136,11 +151,13 @@ form {
 }
 
 .entree-picker-container {
+  // margin-top: 5%;
   background-color: #232323;
   padding-top: 20px;
   border-radius: 10px;
-  input {
+  input, textarea {
     margin: 0 auto;
+    max-width: 40%;
   }
   .callout {
     border: none;
@@ -205,15 +222,20 @@ form {
     vertical-align: middle;
   }
   .review-tile {
-    margin: 0 250px;
+    margin: 0 15%;
   }
-  input {
+  input, textarea {
+    width: 60%;
     margin: 0 auto 20px auto;
     display: block;
+  }
+  #reactgooglegraph-1 {
+    margin: 0 auto;
   }
 }
 
 .entree-home {
+  margin-top: 0;
   .about-site {
     background-color: #232323;
     border-radius: 10px;
@@ -226,6 +248,7 @@ form {
     margin-top: 10px;
     background-color: #232323;
     color: #eebea4;
+    border: none;
   }
   .display-flex {
     display: inline-flex;
@@ -255,8 +278,8 @@ form {
 
    .dialogbox .body {
     position: relative;
-    width: 250px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     // margin: 20px 10px;
     padding: 5px;
     background-color: #464646;
@@ -270,11 +293,14 @@ form {
     font-family: Arial;
     font-size: 14px;
     line-height: 1.5;
+    text-align: left;
+    padding-left: 20px;
   }
   .user {
-    font-size: 12px;
+    font-size: 14px;
     float: right;
     margin: 10px;
+    font-family: 'Satisfy', cursive;
   }
 
   .user-reviews-text {
@@ -282,5 +308,24 @@ form {
     padding: 20px 0;
     border-radius: 10px;
   }
+  .margin-right {
+    margin-right: 30px;
+    margin-top: 10px;
+  }
+}
 
+.charts {
+    margin-top: 20px;
+    // width: 100%;
+    // height: 30%;
+}
+
+#reactgooglegraph-1 {
+    background-color: #020203;
+    margin: 0 0 0 10%;
+    border: 1px solid #fa9500;
+    border-radius: 10px;
+    text {
+      fill: #eebea4;
+    }
 }

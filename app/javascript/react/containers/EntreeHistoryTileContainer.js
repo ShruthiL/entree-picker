@@ -71,8 +71,6 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
         // setErrors(parsedData.errors)
         } else {
           fetchPickedReviews()
-
-          // props.getGamePageInfo()
         }
       })
 
@@ -91,7 +89,7 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
 
   let usersInputOrRating;
   if (entree.visited) {
-      if (entree.reviews === "") {
+    if (entree.reviews === "") {
         usersInputOrRating =
           <div>
             {showReviewForm ?
@@ -104,12 +102,6 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
             {reviewTile}
           </div>
       }
-      // <div>{entree.reviews === "" ?
-      //   <ReviewFormContainer entree={entree} fetchPickedReviews={fetchPickedReviews}/>  : reviewTile}
-      // </div>
-      // <ReviewFormContainer entree={entree} fetchPickedReviews={fetchPickedReviews}/> : reviewTile}
-// <button className="button" onClick={handleAddReview}>Add Review</button>
-    // usersInputOrRating = <div>{entree.reviews === "" ? <ReviewFormContainer entree={entree} fetchPickedReviews={fetchPickedReviews}/> : ""}</div>
   } else {
     usersInputOrRating =
     <div>
@@ -120,11 +112,6 @@ const EntreeHistoryTileContainer = ({entree, fetchPickedReviews}) => {
       reviewTile}
     </div>
   }
-  // <div>{entree.reviews ? <ReviewTileContainer
-  //     entree={entree}
-  //     review={entree.reviews}
-  //     fetchPickedReviews={fetchPickedReviews}/> : ""}
-  // </div>
 
   return (
     <div className="callout">

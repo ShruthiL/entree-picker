@@ -22,7 +22,6 @@ const ErrorList = ({errors}) => {
   } else {
     return ""
   }
-
 }
 
 export default ErrorList

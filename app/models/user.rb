@@ -10,8 +10,6 @@ class User < ApplicationRecord
   has_many :MenuItems, through: :reviews
 
   has_one :site_review
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

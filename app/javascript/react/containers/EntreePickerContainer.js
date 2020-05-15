@@ -49,7 +49,7 @@ const EntreePickerContainer = (props) => {
     setShowOptions(true)
   }
 
-  if (shouldRedirect) {
+  if (shouldRedirect && locationAvailabe && locationPermission) {
     return <Redirect
       to={{
         pathname: "/picked_entree",
