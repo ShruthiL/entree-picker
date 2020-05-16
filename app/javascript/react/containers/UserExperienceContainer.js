@@ -49,7 +49,7 @@ const UserExperienceContainer = (props) => {
 
     let cumulativeData = [["dates", "data"]]
       for(const ele in responseData) {
-        cumulativeData.push([ele, responseData[ele]])
+        cumulativeData.push([ele.substring(5, 10).replace('-', '/'), responseData[ele]])
     }
 
     setChartsData(cumulativeData)
