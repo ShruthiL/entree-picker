@@ -91,6 +91,13 @@ input.display-none, textarea.display-none{
   text-align: center;
   color: #e85d20;
   padding: 20px 0;
+  #flash-messages {
+    .flash-notice {
+      background-color: #fdfffc;
+      border-radius: 10px;
+      margin-bottom: 2%;
+    }
+  }
 }
 
 label.entree-text {
@@ -114,10 +121,6 @@ label.entree-text {
 }
 
 .errorText {
-  background-color: #f7e4e1;
-}
-
-.flash-messages {
   background-color: #f7e4e1;
 }
 
