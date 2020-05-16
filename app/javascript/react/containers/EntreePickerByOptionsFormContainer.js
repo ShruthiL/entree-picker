@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from 'react-router-dom'
 
+import ErrorList from '../components/ErrorList'
+
 const EntreePickerByOptionsFormContainer = (props) => {
   const [ selectedOptionsRecord, setSelectedOptionsRecord] = useState({
     zipcode: '',
     price: ''
   })
   const [ shouldRedirect, setShouldRedirect ] = useState(false)
+  const [errors, setErrors] = useState({});
 
   const handleInputChange = event => {
     setSelectedOptionsRecord({...selectedOptionsRecord, [event.currentTarget.id]: event.currentTarget.value})
   }
+
+  const validFormSubmission = () => {
+    let submitErrors = {};
+    if (selectedOptionsRecord["zipcode"].trim() === "" || selectedOptionsRecord["zipcode"].trim().length !== 5 ) {
+      submitErrors = {
+        ...submitErrors,
+        ["Zipcode"]: "Please provide a valid zipcode"
+      };
+    }
+
+    setErrors(submitErrors);
+    return _.isEmpty(submitErrors);
+  };
 
   const handleClearFields = () => {
     setSelectedOptionsRecord({
@@ -26,7 +42,9 @@ const EntreePickerByOptionsFormContainer = (props) => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    setShouldRedirect(true)
+    if (validFormSubmission()) {
+      setShouldRedirect(true)
+    }
   }
 
   if (shouldRedirect) {
@@ -41,6 +59,7 @@ const EntreePickerByOptionsFormContainer = (props) => {
   return (
     <div className="callout">
       <form onSubmit={handleFormSubmit}>
+        <ErrorList errors={errors}/>
         <label>
           Zipcode:
           <input

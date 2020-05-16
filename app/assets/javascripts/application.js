@@ -25,9 +25,3 @@ $(function(){
    }
    setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
 });
-
-// $(function(){
-//   var changeTheme = document.getElementById('change-theme').addEventListener(function(){
-//     console.log()
-//   })
-// });

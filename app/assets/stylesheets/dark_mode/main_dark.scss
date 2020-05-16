@@ -95,6 +95,13 @@ input.display-none, textarea.display-none{
   text-align: center;
   color: #eebea4;
   padding: 20px 0;
+  #flash-messages {
+    .flash-notice {
+      background-color: #232323;
+      border-radius: 10px;
+      margin-bottom: 2%;
+    }
+  }
 }
 
 label.entree-text {

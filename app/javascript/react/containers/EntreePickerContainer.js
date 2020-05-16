@@ -66,7 +66,7 @@ const EntreePickerContainer = (props) => {
   return (
     <div className="entree-picker-container">
       { locationAvailabe ? <></> : <div>Your browswer doesn't support location, please pick entrée by options</div> }
-      { locationPermission ? <></> : <div>Please allow access to you location to search by location.</div> }
+      { locationPermission ? <></> : <div>Please allow location access to your browser to search by location.</div> }
       <button disabled={!locationPermission || !locationAvailabe} className="button" onClick={handlePickRandomEntree}>Entrée Picker By Your Location</button>
       <button className="button" onClick={handlePickRandomMenuByOptions}>Entrée Picker By Options</button>
       {showOptions ? <EntreePickerByOptionsFormContainer /> : <></>}
