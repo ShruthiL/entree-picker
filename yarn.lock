@@ -9880,6 +9880,11 @@ react-dom@~16.8.0:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
+react-ga@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.7.0.tgz#24328f157f31e8cffbf4de74a3396536679d8d7c"
+  integrity sha512-AjC7UOZMvygrWTc2hKxTDvlMXEtbmA0IgJjmkhgmQQ3RkXrWR11xEagLGFGaNyaPnmg24oaIiaNPnEoftUhfXA==
+
 react-google-charts@2:
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/react-google-charts/-/react-google-charts-2.0.29.tgz#1f07b6cccf6c6b0965a00ae9e50f1d75d48f723d"
