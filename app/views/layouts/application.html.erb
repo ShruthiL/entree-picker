@@ -12,25 +12,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="watermark">
+  <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+    <div class="title-bar-title"></div>
+  </div>
+  <div class="top-bar-container sticky-container" data-sticky-container>
+    <div class="sticky is-stuck is-at-top" data-sticky data-options="marginTop:0;">
+      <nav class="top-bar" id="example-menu">
+        <div class="top-bar-left">
+          <h2><a href="/">EntréePicker</a></h2>
+        </div>
+        <div class="top-bar-right">
+          <section class="top-bar-section">
+            <ul class="right menu">
+              <%- if current_user -%>
+                <li><%= link_to 'Switch Theme', switch_theme_path %></li>
+                <li><%= link_to 'Entrée Picker', entree_picker_path %></li>
+                <li><%= link_to 'History', entree_history_path %></li>
+                <li><%= link_to 'Your Experience', your_experience_path %></li>
+                <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+              <%- else -%>
+                <li><%= link_to 'Switch Theme', switch_theme_path %></li>
+                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign In', new_user_session_path %></li>
+              <%- end -%>
+            </ul>
+          </section>
+        </div>
+      </nav>
+    </div>
+  </div>
 
-  <nav class="top-bar">
-    <h2><a href="/">EntréePicker</a></h2>
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Switch Theme', switch_theme_path %></li>
-          <li><%= link_to 'Entrée Picker', entree_picker_path %></li>
-          <li><%= link_to 'History', entree_history_path %></li>
-          <li><%= link_to 'Your Experience', your_experience_path %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Switch Theme', switch_theme_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
   <div class="content grid-container">
     <div id="flash-messages">
       <%- flash.each do |key, value| -%>

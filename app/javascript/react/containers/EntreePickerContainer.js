@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from 'react-router-dom'
+import LoaderComponent from '../components/LoaderComponent'
 
 import EntreePickerByOptionsFormContainer from './EntreePickerByOptionsFormContainer';
 
@@ -50,19 +51,23 @@ const EntreePickerContainer = (props) => {
   }
 
   if (shouldRedirect && locationAvailabe && locationPermission) {
-    return <Redirect
-      to={{
-        pathname: "/picked_entree",
-        state: { location: location }
-      }}
-    />
+    if (Object.keys(location).length === 0 ) {
+      return <><LoaderComponent /></>
+    } else {
+      return <Redirect
+        to={{
+          pathname: "/picked_entree",
+          state: { location: location }
+        }}
+      />
+    }
   }
 
   return (
     <div className="entree-picker-container">
       { locationAvailabe ? <></> : <div>Your browswer doesn't support location, please pick entrée by options</div> }
       { locationPermission ? <></> : <div>Please allow access to you location to search by location.</div> }
-      <button disabled={!locationPermission || !locationAvailabe} className="button" onClick={handlePickRandomEntree}>Entrée Picker By Location</button>
+      <button disabled={!locationPermission || !locationAvailabe} className="button" onClick={handlePickRandomEntree}>Entrée Picker By Your Location</button>
       <button className="button" onClick={handlePickRandomMenuByOptions}>Entrée Picker By Options</button>
       {showOptions ? <EntreePickerByOptionsFormContainer /> : <></>}
     </div>

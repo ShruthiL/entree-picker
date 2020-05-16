@@ -9,7 +9,7 @@ const MapComponent = ({location}) => {
     });
     const marker = new google.maps.Marker({position: uluru, map: map});
     google.maps.event.addListener(marker, 'click', function () {
-      window.open(`https://www.google.com/maps?z=12&t=m&q=loc:${location.lat}+${location.lon}`);
+      window.open(`https://www.google.com/maps/place/${location.address}`);
    });
    marker.setMap( map );
   })

@@ -47,7 +47,7 @@ const HomeContainer = (props) => {
 
     let cumulativeData = [["dates", "data"]]
       for(const ele in responseData) {
-        cumulativeData.push([ele, responseData[ele]])
+        cumulativeData.push([ele.substring(5, 10).replace('-', '/'), responseData[ele]])
     }
 
     setChartsData(cumulativeData)
@@ -109,6 +109,7 @@ const HomeContainer = (props) => {
         <h5>What our users think about Entrée Picker</h5>
         <div className="grid-x">
           <div className="site-reviews cell medium-6">
+            <p className="negative-margin">Entrée Search Trend</p>
             <div><ChartsContainer chartsData={chartsData} homePage={true}/></div>
           </div>
           <div className="site-reviews cell medium-6">
