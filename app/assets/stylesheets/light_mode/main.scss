@@ -228,6 +228,10 @@ form {
   #reactgooglegraph-1 {
     margin: 0 auto;
   }
+
+  .charts {
+    margin-top: 0;
+  }
 }
 
 .entree-home {
@@ -326,5 +330,20 @@ form {
   margin: 0 0 0 10%;
   text {
     fill: #fa9500;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .top-bar {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .top-bar-section {
+    li {
+      width: 100%;
+    }
   }
 }

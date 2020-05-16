@@ -98,6 +98,7 @@ const UserExperienceContainer = (props) => {
     <div className="user-experience background-color">
       <h4>We would love to know your experience with the Entrée Picker</h4>
         {siteReviewTile}
+        <h5>Your Search Trend</h5>
         {chartsTile}
     </div>
   );

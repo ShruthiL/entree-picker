@@ -9,13 +9,16 @@ body {
 
 .top-bar {
   background-color: transparent;
-  // height: 60px;
   a {
     color: #fa9500;
   }
   ul {
     background-color: transparent;
   }
+}
+
+.title-bar {
+  background-color: transparent;
 }
 
 .title-bar {
@@ -228,6 +231,9 @@ form {
   #reactgooglegraph-1 {
     margin: 0 auto;
   }
+  .charts {
+    margin-top: 0;
+  }
 }
 
 .entree-home {
@@ -324,4 +330,12 @@ form {
     text {
       fill: #eebea4;
     }
+}
+
+@media screen and (max-width: 480px) {
+  .top-bar-section {
+    li {
+      width: 100%;
+    }
+  }
 }
