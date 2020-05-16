@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from 'react-router-dom'
 import LoaderComponent from '../components/LoaderComponent'
 
 import ReviewTileComponent from '../components/ReviewTileComponent';
@@ -63,6 +64,14 @@ const PopularEntreeContainer = ({location}) => {
   const handleEntree = event => {
     event.preventDefault();
     fetchPopularEntree();
+  }
+
+  if (!location.state) {
+    return <Redirect
+      to={{
+        pathname: "/entree_picker",
+      }}
+    />
   }
 
   if(errors) {
