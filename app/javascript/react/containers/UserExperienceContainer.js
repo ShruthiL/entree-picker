@@ -68,7 +68,7 @@ const UserExperienceContainer = (props) => {
     })
     .then((response) => response.json())
     .then((body) => {
-      setSiteReviews(body);
+      setSiteReviews(body.current_user_review);
     })
     .catch((error) => console.error(`Error in fetch: ${error.message}`));
   }
