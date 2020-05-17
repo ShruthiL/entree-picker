@@ -339,6 +339,14 @@ form {
     }
 }
 
+@media screen and (max-width: 768px) {
+  .entree-home  {
+    .dialogbox .body {
+      width: 100%;
+    }
+  }
+}
+
 @media screen and (max-width: 480px) {
   .top-bar-section {
     li {

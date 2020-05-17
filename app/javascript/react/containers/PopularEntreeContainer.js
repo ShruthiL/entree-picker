@@ -54,7 +54,6 @@ const PopularEntreeContainer = ({location}) => {
           setPopularEntree({})
         } else {
           setPopularEntree(body)
-          console.log(body)
           setEntreeReviews(body.reviews)
         }
     })
