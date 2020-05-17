@@ -88,10 +88,11 @@ const UserExperienceContainer = (props) => {
   }
 
   let chartsTile;
-  if (Object.keys(chartsData).length > 0) {
+  if (Object.keys(chartsData).length > 1) {
+    debugger
     chartsTile = <ChartsContainer chartsData={chartsData} homePage={false}/>
   } else {
-    chartsTile = <></>
+    chartsTile = <>No Searches yet</>
   }
 
   return (

@@ -25,16 +25,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :phone_number, "Phone Number", class: "entree-text" %>
-      <%= f.telephone_field :phone_number, class: 'display-none', autofocus: true, autocomplete: "phone_number" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :zip_code, "Zip Code", class: "entree-text" %>
-      <%= f.number_field :zip_code, class: 'display-none', autofocus: true, autocomplete: "zip_code" %>
-    </div>
-
-    <div class="field">
       <%= f.label :password, class: "entree-text" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
