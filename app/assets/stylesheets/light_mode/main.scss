@@ -281,7 +281,7 @@ form {
 
    .dialogbox .body {
     position: relative;
-    width: 100%;
+    width: 300px;
     height: 100%;
     padding: 5px;
     background-color: #fdfffc;
@@ -340,6 +340,11 @@ form {
 @media screen and (max-width: 768px) {
   .top-bar {
     height: auto;
+  }
+  .entree-home  {
+    .dialogbox .body {
+      width: 100%;
+    }
   }
 }
 

@@ -30,8 +30,6 @@ const EntreePickerContainer = (props) => {
     navigator.geolocation.getCurrentPosition(function(position) {
      lat = position.coords.latitude;
      lon = position.coords.longitude;
-     console.log('lat and lng', position.coords.latitude);
-     console.log('lat and lng', position.coords.longitude);
      setLocation({
        lat: lat,
        lon: lon
