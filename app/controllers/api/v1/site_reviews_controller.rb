@@ -4,7 +4,7 @@ class Api::V1::SiteReviewsController < ApplicationController
 
   def index
     render json: { current_user_review: serialized_data(SiteReview.where(user: current_user), SiteReviewSerializer),
-      site_reviews: serialized_data(SiteReview.where.not(user: current_user).order("rating DESC").limit(2), SiteReviewSerializer) }
+      site_reviews: serialized_data(SiteReview.where.not(user: current_user).order("rating DESC", "created_at DESC").limit(2), SiteReviewSerializer) }
   end
 
   def create
