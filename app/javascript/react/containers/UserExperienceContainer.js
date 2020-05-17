@@ -89,7 +89,6 @@ const UserExperienceContainer = (props) => {
 
   let chartsTile;
   if (Object.keys(chartsData).length > 1) {
-    debugger
     chartsTile = <ChartsContainer chartsData={chartsData} homePage={false}/>
   } else {
     chartsTile = <>No Searches yet</>

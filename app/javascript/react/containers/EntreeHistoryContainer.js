@@ -29,8 +29,8 @@ const EntreeHistoryContainer = (props) => {
 
   let historyTile
 
-  if (Object.keys(entreeHistory) > 0) {
-     historyTile = <>Loading</>
+  if (entreeHistory.length === 0) {
+     historyTile = <div className="no-data">No Searches yet</div>
   } else {
     historyTile = entreeHistory.map(entree => {
       return (
