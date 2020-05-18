@@ -1,6 +1,9 @@
 class HomesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :switch_theme]
   def index
+    if session['theme'] == nil
+      session['theme'] == "light_path"
+    end
   end
 
   def authenticate
