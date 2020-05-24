@@ -43,7 +43,7 @@ RSpec.describe Api::V1::PickedEntreesController, type: :controller do
       expect(response.content_type).to eq 'application/json'
     end
 
-    it "returns all podcasts in the database" do
+    it "returns all entrees in the database" do
       sign_in user1
       get :index
       response_body = JSON.parse(response.body)
