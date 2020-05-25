@@ -96,11 +96,11 @@ RSpec.describe Api::V1::AllUsersPickedEntreesController, type: :controller do
       expect(response.content_type).to eq 'application/json'
     end
 
-    it "returns all entrees for the current user in the database" do
+    it "returns all entrees for the all user in the database" do
       sign_in user1
       get :index
       response_body = JSON.parse(response.body)
-      
+
       expect(response_body.length).to eq 1
       expect(response_body[DateTime.current.strftime('%Y-%m-%d')]).to eq 3
     end
